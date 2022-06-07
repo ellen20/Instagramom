@@ -1,3 +1,35 @@
+# FROM node:12 AS build-stage
+# WORKDIR /react-app
+# COPY react-app/. .
+
+# Build our React App
+# RUN npm install
+# RUN npm run build
+
+FROM python:3.9
+ENV REACT_APP_BASE_URL=https://my-instagramom.herokuapp.com/
+
+# Setup Flask environment
+ENV FLASK_APP=app
+ENV FLASK_ENV=production
+ENV SQLALCHEMY_ECHO=True
+
+
+EXPOSE 8000
+
+WORKDIR /var/www
+COPY . .
+COPY /react-app/build/* app/static/
+
+
+# Install Python Dependencies
+RUN pip install -r requirements.txt
+RUN pip install psycopg2
+
+# Run flask environment
+CMD gunicorn --worker-class eventlet -w 1 app:app
+# CMD gunicorn app:app
+
 # Start with the python:3.9 image
 
 # Set the following enviroment variables
@@ -11,7 +43,7 @@
 
 # Copy all the files from your repo to the working directory
 
-# Copy the built react app (it's built for us) from the  
+# Copy the built react app (it's built for us) from the
 # /react-app/build/ directory into your flasks app/static directory
 
 # Run the next two python install commands with PIP
