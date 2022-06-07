@@ -1,17 +1,17 @@
-FROM node:12 AS build-stage
+# FROM node:12 AS build-stage
 
-WORKDIR /react-app
-COPY react-app/. .
+# WORKDIR /react-app
+# COPY react-app/. .
 
 # You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=https://my-instagramom.herokuapp.com/
+
 
 # Build our React App
-RUN npm install
-RUN npm run build
+# RUN npm install
+# RUN npm run build
 
 FROM python:3.9
-
+ENV REACT_APP_BASE_URL=https://my-instagramom.herokuapp.com/
 # Setup Flask environment
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
@@ -28,4 +28,5 @@ RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
 # Run flask environment
-CMD gunicorn --worker-class eventlet -w 1 app:app
+# CMD gunicorn --worker-class eventlet -w 1 app:app
+CMD gunicorn app:app
