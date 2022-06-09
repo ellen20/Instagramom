@@ -1,0 +1,15 @@
+
+.new-post-main {
+    height: 80vh;
+    width: 55vw;
+    background-color: white !important;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    animation: popup 400ms forwards;
+}
+.preview-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
