@@ -101,7 +101,7 @@ const LoginForm = () => {
             <span
               className="signup-link"
               onClick={() => history.push("/signup")}>
-              Sign up
+              Sign Up
             </span>
           </div>
         </div>

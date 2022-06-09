@@ -33,7 +33,7 @@ function App() {
           <LoginForm />
         </Route>
 
-        <Route path='/sign-up' exact={true}>
+        <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
 
