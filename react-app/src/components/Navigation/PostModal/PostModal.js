@@ -10,26 +10,7 @@ const PostModal = () => {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            {/* {num !== 1 ? (
-                <div
-                    onClick={() => setNum(1)}
-                    className="nav-icons"
-                >
-                    {newPostIcon}
-                </div>
-            ):(
-                <div
-                    onClick={() => setNum(1)}
-                    className="nav-icons"
-                >
-                    {postIconActive}
-                </div>
-            )}
-            {num === 1 && (
-                <Modal onClose={() => setNum(0)}>
-                    <NewPost />
-                </Modal>
-            )} */}
+
             <button onClick={() => setShowModal(true)}>New Post</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

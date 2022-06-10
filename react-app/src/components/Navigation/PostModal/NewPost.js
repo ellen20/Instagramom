@@ -4,6 +4,8 @@ import { createPost, findFollowingPosts, findPosts } from "../../../store/post";
 import { newIcon } from "./newIcons";
 import { updateUser } from "../../../store/user";
 import "./NewPost.css";
+import { uploadPost } from "../../../store/post";
+
 
 const NewPost = () => {
     const dispatch = useDispatch();
@@ -21,7 +23,7 @@ const NewPost = () => {
         setErrors([]);
     }, [url]);
 
-    const submit = () => {
+    const createNewPost = () => {
         let err = [];
 
         if (url.length < 1) {
@@ -43,17 +45,12 @@ const NewPost = () => {
 
         const post = {
             file: imgUrl,
-            description: desc,
+            description: "test",
         };
 
-        dispatch(createPost(post))
-            .then(() => dispatch(findFollowingPosts()))
-            .then(() => {
-                if (path === `/users/${user?.id}`) {
-                    dispatch(findPosts(user?.id));
-                    dispatch(updateUser(user?.id));
-                }
-            });
+        dispatch(uploadPost(post))
+
+
 
     };
 
@@ -64,13 +61,13 @@ const NewPost = () => {
 
                 <div className="new-post-top">
                     <p className="new-title">Create new post</p>
-                    <div className="new-submit" onClick={submit}>
+                    <div className="new-submit" onClick={createNewPost}>
                         Share
                     </div>
                 </div>
 
                 <div className="new-post-bottom">
-                    <div className="post-buttom-left">
+                    <div className="post-bottom-left">
                         {url === "" ? (
                             <div className="new-post-preview">
                                 {newIcon}
@@ -112,8 +109,6 @@ const NewPost = () => {
                     {errors &&
                         errors.map((err) => <div className="post-error">{err}</div>)}
                 </div>
-                {/* {errors &&
-                    errors.map((err) => <div className="post-error">{err}</div>)} */}
             </div>
         </>
     );

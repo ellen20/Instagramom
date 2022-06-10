@@ -6,38 +6,49 @@ from app.aws_s3 import *
 import boto3
 import botocore
 import os
+from sqlalchemy import desc, asc
 
 post_routes = Blueprint('posts', __name__)
 
+@post_routes.route("/all")
+def post_all():
+    posts = Post.query.order_by(desc(Post.id))
+    return {"posts": [ post.to_dict() for post in posts ]}
 
 @post_routes.route('/new', methods=['POST'])
 @login_required
 def new_post():
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
 
-    if "file" not in request.files:
-        return "No user_file key in request.files"
+    image = request.files["image"]
 
-    file = request.files['file']
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
 
-    # data = request.json
+    image.filename = get_unique_filename(image.filename)
 
-    # post = Post(user_id=current_user.id, media_url=data['media_url'], description=data['description'], createdAt=datetime.now())
+    upload = upload_file_to_s3(image)
+    print("-------------------",upload)
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
 
-    if file:
-        file_url = upload_file_to_s3(file, os.environ.get("S3_BUCKET"))
-        post = Post(user_id=current_user.id, media_url=file_url, description=request.form.get('description'), createdAt=datetime.now())
-        db.session.add(post)
-        db.session.commit()
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    new_post = Post(user_id=current_user.id, media_url=url, description='test', created_at=datetime.now())
+    db.session.add(new_post)
+    db.session.commit()
+    return {new_post.to_dict}
 
-    return {'msg': 'ok'}
 
-# @post_routes.route('/<int:post_id>', methods=['DELETE'])
-# @login_required
-# def delete_posts(post_id):
+@post_routes.route('/<int:post_id>', methods=['DELETE'])
+@login_required
+def delete_post(post_id):
+    post_remove = Post.query.get(post_id)
 
-#     post = Post.query.get(post_id)
-
-#     db.session.delete(post)
-#     db.session.commit()
-
-#     return following_posts()
+    db.session.delete(post_remove)
+    db.session.commit()
+    return {'id': post_id}

@@ -7,3 +7,51 @@
     flex-direction: column;
     animation: popup 400ms forwards;
 }
+.new-post-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 42px;
+    border-bottom: 0.5px solid #dbdbdb;
+}
+
+.new-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.new-submit {
+
+}
+
+.new-post-bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-bottom-left {
+    width: 37.5vw;
+    border-right: 0.5px solid #dbdbdb;
+    height: calc(80vh - 42px);
+}
+
+.new-p-upload {
+    width: 158px;
+    height: 30px;
+    background-color: #0095f6;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.new-p-upload:active {
+    opacity: 0.9;
+}
