@@ -1,11 +1,8 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Post, Follow, User, db, Comment, Like
 from datetime import datetime
 from app.aws_s3 import *
-import boto3
-import botocore
-import os
 from sqlalchemy import desc, asc
 
 post_routes = Blueprint('posts', __name__)
@@ -33,8 +30,8 @@ def new_post():
         return upload, 400
 
     url = upload["url"]
-    # flask_login allows us to get the current user from the request
-    new_post = Post(user_id=current_user.id, media_url=url, description='test', created_at=datetime.now())
+
+    new_post = Post(user_id=current_user.id, media_url=url, description=request.form.get('description'), created_at=datetime.now())
     db.session.add(new_post)
     db.session.commit()
 
@@ -49,3 +46,17 @@ def delete_post(post_id):
     db.session.delete(post_remove)
     db.session.commit()
     return {'id': post_id}
+
+@post_routes.route('/<int:post_id>', methods=['PUT'])
+@login_required
+def edit_post(post_id):
+
+    data = request.json
+
+    edit_post = Post.query.get(post_id)
+
+    edit_post.description = request.json['description']
+
+    db.session.commit()
+
+    return edit_post.to_dict()

@@ -1,64 +1,57 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createPost, findFollowingPosts, findPosts } from "../../../store/post";
-import { newIcon } from "./newIcons";
-import { updateUser } from "../../../store/user";
-import "./NewPost.css";
 import { uploadPost } from "../../../store/post";
-import { useModal } from "../../../context/UseModal";
+import { newIcon } from "./newIcons";
+import "./NewPost.css";
 
-const NewPost = () => {
+const NewPost = ({setShowModal}) => {
     const dispatch = useDispatch();
-    const emoji = useRef(null);
-    const { num, setNum } = useModal();
     const [url, setUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("");
-    const [desc, setDesc] = useState("");
+    const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
-    const path = window.location.pathname;
     const user = useSelector((state) => state.session.user);
     const [image, setImage] = useState(true);
-    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         setErrors([]);
     }, [url]);
 
     const createNewPost = () => {
-        let err = [];
+        let errorr = [];
 
-        if (url.length < 1) {
-            err.push("Please provide an image.");
-            return setErrors(err);
+        if (url.length === 0) {
+            errorr.push("Please provide an image.");
+            return setErrors(errorr);
         }
 
-        if (desc.length > 400) {
-            err.push("Caption cannot be over 400 characters.");
+        if (description.length > 400) {
+            errorr.push("Caption cannot be over 400 characters.");
         }
 
         if (image === false) {
-            err.push("Please provide an image file.");
+            errorr.push("Please provide an image file.");
         }
 
-        if (err.length > 0) {
-            return setErrors(err);
+        if (errorr.length > 0) {
+            return setErrors(errorr);
         }
 
         const post = {
             file: imgUrl,
-            description: "test",
+            description: description,
         };
-
         dispatch(uploadPost(post))
-
+        setShowModal(false)
     };
+
 
     return (
         <>
             <div className="close-modal">
                 <img
                     className="close-modal-img"
-                    onClick={() => setNum(0)}
+                    onClick={() => setShowModal(false)}
                     src="https://img.icons8.com/ios-filled/50/ffffff/multiply.png"
                 />
             </div>
@@ -101,9 +94,28 @@ const NewPost = () => {
                             />
                         )}
                     </div>
+
+                    <div className="post-bottom-right">
+                        <div className="new-post-user">
+                            <img className="new-user-img" src={user.image_url} />
+                            <p className="new-username">{user.username}</p>
+                        </div>
+                        <div className="description">
+                            <textarea
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                className="new-post-desc"
+                                placeholder="Write a caption..."
+                                maxLength="300" />
+                        </div>
+                        <div className="new-post-icon">
+
+                        </div>
+                    </div>
+
                     {url.length > 0 ? (
                         <div
-                            className="post-url"
+                            className="remove-image"
                             onClick={() => {
                                 setUrl("");
                                 setImgUrl("");
@@ -112,8 +124,11 @@ const NewPost = () => {
                             Remove Image
                         </div>
                     ) : null}
+                    <div className="post-error">
                     {errors &&
                         errors.map((err) => <div className="post-error">{err}</div>)}
+
+                    </div>
                 </div>
             </div>
         </>

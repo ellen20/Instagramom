@@ -1,25 +1,12 @@
-const GET_POSTS = "post/GET_POSTS";
-const GET_SINGLE_POST = "post/GET_SINGLE_POST";
-const GET_FOLLOWING_POSTS = "post/GET_FOLLOWING_POSTS";
 const GET_ALL_POSTS = 'post/GET_ALL_POSTS';
 const CREATE_POST = 'post/CREATE_POST';
 const DELETE_POST = 'post/DELETE_POST';
+const EDITED_POST = 'post/EDITED_POST';
 
 const getAll = (posts) => ({
     type: GET_ALL_POSTS,
     payload: posts,
 })
-
-const getMyPosts = (posts, userId) => ({
-    type: GET_POSTS,
-    payload: posts,
-    userId,
-});
-
-const getSinglePost = (posts) => ({
-    type: GET_SINGLE_POST,
-    payload: posts,
-});
 
 const createNewPost = (post) => ({
     type: CREATE_POST,
@@ -28,6 +15,10 @@ const createNewPost = (post) => ({
 const removePost = (id) => ({
     type: DELETE_POST,
     payload: id,
+});
+const editedPost = (post) => ({
+    type: EDITED_POST,
+    payload: post,
 });
 
 export const getAllPosts = () => async (dispatch) => {
@@ -51,8 +42,8 @@ export const uploadPost = (post) => async (dispatch) => {
         method: "POST",
         body: form,
     });
+
     const data = await res.json()
-    console.log(">>>>>>>>", data)
     if (res.ok) {
         dispatch(createNewPost(data))
     } else {
@@ -60,7 +51,7 @@ export const uploadPost = (post) => async (dispatch) => {
     }
 };
 
-export const editPost = (post, id) => async (dispatch) => {
+export const editPost = (id, post) => async (dispatch) => {
     const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
         headers: {
@@ -68,17 +59,20 @@ export const editPost = (post, id) => async (dispatch) => {
         },
         body: JSON.stringify(post),
     });
-    const data = await res.json();
 
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(editedPost(data))
+    } else {
+        return data
+    }
 };
 
 export const deletePost = (id) => async (dispatch) => {
     const res = await fetch(`/api/posts/${id}`, {
         method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
     });
+
     const data = await res.json();
     if (res.ok) {
         dispatch(removePost(data.id))
@@ -86,10 +80,6 @@ export const deletePost = (id) => async (dispatch) => {
         return data
     }
 };
-
-
-
-
 
 const initialState = {};
 
@@ -105,12 +95,9 @@ export default function reducer(state = initialState, action) {
         case DELETE_POST:
             delete newState[action.payload]
             return newState
-        // case GET_POSTS:
-        //     return { ...state, [action.userId]: action.payload };
-        // case GET_FOLLOWING_POSTS:
-        //     return { ...state, following: action.payload.following };
-        // case GET_SINGLE_POST:
-        //     return { ...state, ...action.payload };
+        case EDITED_POST:
+            newState[action.payload.id] = action.payload
+            return newState
         default:
             return state;
     }

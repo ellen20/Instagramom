@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
-import { useModal } from "../../../context/UseModal";
 import NewPost from "./NewPost";
-import { newPostIcon, postIconActive } from "../../Home/icons";
 
 
-const PostModal = () => {
-    // const { num, setNum } = useModal();
+const NewPostModal = () => {
     const [showModal, setShowModal] = useState(false);
+    const closeModal = () => {
+        if (!showModal) return; // do nothing if modal already closed
+        setShowModal(false); // else close modal
+
+    };
     return (
         <>
-
             <button onClick={() => setShowModal(true)}>New Post</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <NewPost />
+                    <NewPost setShowModal={closeModal}/>
                 </Modal>
             )}
         </>
     );
 };
 
-export default PostModal;
+export default NewPostModal;

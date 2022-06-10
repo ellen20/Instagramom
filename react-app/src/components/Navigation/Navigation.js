@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import PostModal from './PostModal/PostModal';
+import NewPostModal from './NewPostModal/NewPostModal';
 import User from '../User/User';
-import NewPost from './PostModal/NewPost';
 import "./Navigation.css";
 
 
@@ -14,10 +13,6 @@ const Navigation = () => {
     const user = useSelector((state) => state.session?.user);
     const history = useHistory();
     const results = useSelector((state) => state.search?.users);
-
-
-
-
 
     return (
         <div className="nav-main">
@@ -37,7 +32,7 @@ const Navigation = () => {
 
                 <div className="nav-right">
                     <h3>Icons</h3>
-                    <PostModal />
+                    <NewPostModal />
                 </div>
 
                 <div>
