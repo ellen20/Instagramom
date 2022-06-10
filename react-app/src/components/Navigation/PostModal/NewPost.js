@@ -5,12 +5,12 @@ import { newIcon } from "./newIcons";
 import { updateUser } from "../../../store/user";
 import "./NewPost.css";
 import { uploadPost } from "../../../store/post";
-
+import { useModal } from "../../../context/UseModal";
 
 const NewPost = () => {
     const dispatch = useDispatch();
     const emoji = useRef(null);
-    // const { num, setNum } = useModal();
+    const { num, setNum } = useModal();
     const [url, setUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("");
     const [desc, setDesc] = useState("");
@@ -18,6 +18,7 @@ const NewPost = () => {
     const path = window.location.pathname;
     const user = useSelector((state) => state.session.user);
     const [image, setImage] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         setErrors([]);
@@ -50,12 +51,17 @@ const NewPost = () => {
 
         dispatch(uploadPost(post))
 
-
-
     };
 
     return (
         <>
+            <div className="close-modal">
+                <img
+                    className="close-modal-img"
+                    onClick={() => setNum(0)}
+                    src="https://img.icons8.com/ios-filled/50/ffffff/multiply.png"
+                />
+            </div>
 
             <div className="new-post-main">
 

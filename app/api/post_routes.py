@@ -29,11 +29,7 @@ def new_post():
     image.filename = get_unique_filename(image.filename)
 
     upload = upload_file_to_s3(image)
-    print("-------------------",upload)
     if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
         return upload, 400
 
     url = upload["url"]
@@ -41,7 +37,8 @@ def new_post():
     new_post = Post(user_id=current_user.id, media_url=url, description='test', created_at=datetime.now())
     db.session.add(new_post)
     db.session.commit()
-    return {new_post.to_dict}
+
+    return new_post.to_dict()
 
 
 @post_routes.route('/<int:post_id>', methods=['DELETE'])
