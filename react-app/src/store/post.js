@@ -29,7 +29,6 @@ export const getAllPosts = () => async (dispatch) => {
     } else {
         return data
     }
-
 }
 
 export const uploadPost = (post) => async (dispatch) => {

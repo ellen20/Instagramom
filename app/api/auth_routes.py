@@ -65,6 +65,7 @@ def sign_up():
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
+            fullname=form.data['fullname'],
             email=form.data['email'],
             password=form.data['password'],
             image_url="https://nitreo.com/img/igDefaultProfilePic.png",
@@ -86,7 +87,7 @@ def edit_profile():
         if current_user.username is not form.data['username']:
             current_user.username = form.data['username']
         current_user.description = form.data['bio']
-        current_user.name = form.data['name']
+        current_user.fullname = form.data['fullname']
 
         db.session.commit()
         return current_user.to_dict()

@@ -5,6 +5,7 @@ import "./Post.css";
 import { getAllPosts } from "../../store/post";
 import { deletePost, editPost } from "../../store/post";
 import EditPostModal from "./EditPostModal/EditPostModal";
+import Comment from "../Comment/Comment";
 
 const Post = () => {
     const history = useHistory();
@@ -23,12 +24,6 @@ const Post = () => {
        dispatch(deletePost(id))
    }
 
-    // const postEdit = (e) => {
-    //     let id = e.currentTarget.value;
-
-    //     dispatch(editPost(id, post))
-    // }
-
     return (
         <div className="all-posts">
             {posts?.map(post => (
@@ -37,12 +32,13 @@ const Post = () => {
                         <div className="post-user">
                             user
                         </div>
+                        {user_id === post.user_id ? (
+
                         <div className="post-top-right">
-                            {/* <ChangePostModal post={post} /> */}
                             <button className="post-delete" value={post.id} onClick={e => postDelete(e)}>delete</button>
                             <EditPostModal post={post} />
-                            {/* <button className="post-edit" value={post.id} onClick={e => postEdit(e)}>edit</button> */}
                         </div>
+                        ): null}
                     </div>
 
                     <div className="post-mid">
@@ -55,7 +51,13 @@ const Post = () => {
                     </div>
 
                     <div className="post-bottom">
-                        following coments
+                        <div className="post-bottom-icons">
+
+                        </div>
+
+                        <div className="post-comment">
+                            <Comment post={post}/>
+                        </div>
                     </div>
                 </div>
             ))}

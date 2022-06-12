@@ -2,20 +2,24 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { useHistory } from "react-router";
+import './Signup.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, fullname, email, password));
       if (data) {
         setErrors(data)
       }
@@ -24,6 +28,10 @@ const SignUpForm = () => {
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const updateFullname = (e) => {
+    setFullname(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -43,51 +51,88 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
+    <div className='signup-page'>
+
+      <form className='signup-form' onSubmit={onSignUp}>
         <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
+          placeholder="Email"
+          className="signup-input"
+          type="text"
+          name="email"
           onChange={updateEmail}
           value={email}
+          required={true}
+          autoComplete="off"
         ></input>
-      </div>
-      <div>
-        <label>Password</label>
         <input
-          type='password'
-          name='password'
+          placeholder="Full Name"
+          className="signup-input"
+          type="text"
+          name="fullname"
+          onChange={updateFullname}
+          value={fullname}
+          autoComplete="off"
+          required={true}
+        ></input>
+        <input
+          placeholder="Username"
+          className="signup-input"
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          autoComplete="off"
+          value={username}
+          required={true}
+        ></input>
+        <input
+          placeholder="Password"
+          className="signup-input"
+          type="password"
+          name="password"
+          autoComplete="off"
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
         <input
-          type='password'
-          name='repeat_password'
+          placeholder="Repeat Password"
+          autoComplete="off"
+          className="signup-input"
+          type="password"
+          name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
+        <button
+          className="signup-submit"
+          type="submit"
+          disabled={
+            username.length < 1 ||
+            email.length < 1 ||
+            password.length < 1 ||
+            repeatPassword.length < 1 ||
+            fullname.length < 1
+          }>
+          Sign Up
+        </button>
+
+        <div className='sigup-errors'>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+
+      </form>
+
+      <div className="signup-bot">
+        Have an account?{" "}
+        <span onClick={() => history.push("/login")} className="signup-log">
+          Log in
+        </span>
       </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+
+    </div>
   );
 };
 
