@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "./Comment.css";
 import { getAllPosts } from "../../store/post";
 import { deletePost, editPost } from "../../store/post";
-import { getAllComments, postComment } from "../../store/comment";
+import { getComments, postComment } from "../../store/comment";
 
 const Comment = ({post}) => {
     const post_id = post.id;
@@ -14,20 +14,20 @@ const Comment = ({post}) => {
     const user_id = useSelector(state => state.session?.user?.id)
     const posts = useSelector(state => Object.values(state?.posts))
     const comments = useSelector(state => Object.values(state?.comments))
-    const spec_comments = comments.filter(comment => comment.post_id === post.id)
-    // console.log("!!!!!", comments)
+    const spec_comments = comments?.filter(comment => comment.post_id === post.id)
     const [comment, setComment] = useState("");
 
     useEffect(() => {
-        // dispatch(getAllComments())
+        dispatch(getComments(post_id))
     }, [dispatch])
 
     const newComment = () => {
         const new_comment = {
+            user_id: user_id,
             post_id: post.id,
             description: comment,
         }
-// console.log("!!!!!", new_comment)
+
         dispatch(postComment(new_comment));
         setComment("");
 
@@ -35,9 +35,9 @@ const Comment = ({post}) => {
 
     return (
         <div className="post-comment-main">
-            {/* {spec_comments?.map(comment => (
-               <div>{comment}</div>
-            ))} */}
+            {spec_comments?.map(comment => (
+               <div>{comment.description}</div>
+            ))}
             <div className="input-comment">
                 <input
                     value={comment}

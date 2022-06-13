@@ -19,7 +19,6 @@ const Post = () => {
 
     useEffect(() => {
         dispatch(getAllPosts())
-        // dispatch(getAllComments())
     }, [dispatch])
 
 
@@ -35,7 +34,7 @@ const Post = () => {
                     <div className="post-card">
                         <div className="post-top">
                             <div className="post-user">
-                                user
+                                {post?.user_id}
                             </div>
                             {user_id === post.user_id ? (
 

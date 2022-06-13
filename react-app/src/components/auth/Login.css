@@ -83,3 +83,7 @@
     cursor: pointer;
     font-size: larger;
 }
+
+.login-errors {
+    color: red;
+}

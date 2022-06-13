@@ -1,10 +1,10 @@
-const GET_ALL_COMMENTS = 'comment/GET_ALL_COMMENTS';
+const GET_COMMENTS = 'comment/GET_COMMENTS';
 const CREATE_COMMENT = 'comment/CREATE_COMMENT';
-// const DELETE_POST = 'post/DELETE_POST';
-// const EDITED_POST = 'post/EDITED_POST';
+const DELETE_COMMENT = 'comment/DELETE_COMMENT';
+const EDITED_COMMENT = 'comment/EDITED_COMMENT';
 
-const getAllCom = (comments) => ({
-    type: GET_ALL_COMMENTS,
+const getCom = (comments) => ({
+    type: GET_COMMENTS,
     payload: comments,
 })
 
@@ -13,21 +13,37 @@ const createComment = (comment) => ({
     payload: comment,
 })
 
-export const getAllComments = () => async (dispatch) => {
-    const res = await fetch("/api/comments/all")
+const removeComment = (id) => ({
+    type: DELETE_COMMENT,
+    payload: id,
+});
+
+// export const getAllComments = () => async (dispatch) => {
+//     const res = await fetch("/api/comments/all")
+//     const data = await res.json()
+//     console.log(">>>>>>>>", data)
+//     if (res.ok) {
+//         dispatch(getAllCom(data))
+//     } else {
+//         return data
+//     }
+// }
+export const getComments = (post_id) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${post_id}`)
     const data = await res.json()
-    console.log(">>>>>>>>", data.comments)
+    // console.log(">>>>>>>>", data)
     if (res.ok) {
-        dispatch(getAllCom(data.comments))
+        dispatch(getCom(data))
     } else {
         return data
     }
 }
 
+
 export const postComment = (comment) => async (dispatch) => {
-    const { post_id, description } = comment;
-   console.log("??????", post_id, description)
+    const { user_id, post_id, description } = comment;
     const form = new FormData();
+    form.append("user_id", user_id);
     form.append("post_id", post_id);
     form.append("description", description);
 
@@ -37,6 +53,7 @@ export const postComment = (comment) => async (dispatch) => {
     });
 
     const data = await res.json()
+
     if (res.ok) {
         dispatch(createComment(data))
     } else {
@@ -44,21 +61,33 @@ export const postComment = (comment) => async (dispatch) => {
     }
 };
 
+export const deleteComment = (id) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${id}`, {
+        method: "DELETE",
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(removeComment(data.id))
+    } else {
+        return data
+    }
+};
 
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
-        case GET_ALL_COMMENTS:
-            action.payload.map(comment => newState[comment.id] = comment)
+        case GET_COMMENTS:
+            action.payload.comments.map(comment => newState[comment.id] = comment)
             return newState
-        // case CREATE_POST:
-        //     newState[action.payload.id] = action.payload
-        //     return newState
-        // case DELETE_POST:
-        //     delete newState[action.payload]
-        //     return newState
+        case CREATE_COMMENT:
+            newState[action.payload.id] = action.payload
+            return newState
+        case DELETE_COMMENT:
+            delete newState[action.payload]
+            return newState
         // case EDITED_POST:
         //     newState[action.payload.id] = action.payload
         //     return newState
