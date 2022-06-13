@@ -26,16 +26,15 @@ function User() {
             <h3>User Profile</h3>
             <ul>
                 <li>
-                    <strong>User Id</strong> {userId}
+                    {user.image_url}
                 </li>
                 <li>
-                    <strong>Username</strong> {user.username}
+                     {user.username}
                 </li>
                 <li>
-                    <strong>Email</strong> {user.email}
+                    {user.email}
                 </li>
             </ul>
-            <LogoutButton />
         </div>
     );
 }

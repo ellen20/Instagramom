@@ -78,3 +78,8 @@
     font-size: 14px;
     margin: 8px 40px;
 }
+
+.login-demo:hover, .signup-link:hover {
+    cursor: pointer;
+    font-size: larger;
+}

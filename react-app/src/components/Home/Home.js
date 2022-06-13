@@ -11,8 +11,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className="home-page">
             <div className="post-section">
                 <Post />
             </div>

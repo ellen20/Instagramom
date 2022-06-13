@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "./Comment.css";
 import { getAllPosts } from "../../store/post";
 import { deletePost, editPost } from "../../store/post";
-import { getAllComments } from "../../store/comment";
+import { getAllComments, postComment } from "../../store/comment";
 
 const Comment = ({post}) => {
     const post_id = post.id;
@@ -14,19 +14,45 @@ const Comment = ({post}) => {
     const user_id = useSelector(state => state.session?.user?.id)
     const posts = useSelector(state => Object.values(state?.posts))
     const comments = useSelector(state => Object.values(state?.comments))
-
+    const spec_comments = comments.filter(comment => comment.post_id === post.id)
+    // console.log("!!!!!", comments)
+    const [comment, setComment] = useState("");
 
     useEffect(() => {
-        dispatch(getAllComments())
-
+        // dispatch(getAllComments())
     }, [dispatch])
+
+    const newComment = () => {
+        const new_comment = {
+            post_id: post.id,
+            description: comment,
+        }
+// console.log("!!!!!", new_comment)
+        dispatch(postComment(new_comment));
+        setComment("");
+
+    }
 
     return (
         <div className="post-comment-main">
-            {comments?.map(comment => (
-               {comment}
-            ))}
-
+            {/* {spec_comments?.map(comment => (
+               <div>{comment}</div>
+            ))} */}
+            <div className="input-comment">
+                <input
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Add a comment..."
+                    maxLength="400"
+                >
+                </input>
+                <div
+                    className="comment-submit"
+                    onClick={(e) => newComment()}
+                >
+                    Post
+                </div>
+            </div>
         </div>
     )
 }

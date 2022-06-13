@@ -5,6 +5,7 @@ from datetime import datetime
 from app.aws_s3 import *
 from sqlalchemy import desc, asc
 from app.forms import NewCommentForm
+from app.api.auth_routes import validation_errors_to_error_messages
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -14,63 +15,30 @@ def comment_all():
     print("????????????", comments)
     return {"comments": [ comment.to_dict() for comment in comments ]}
 
-@comment_routes.route('/', methods=['POST'])
+@comment_routes.route('/new', methods=['POST'])
 @login_required
 def create_comment():
     form = NewCommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     # params = {
-    #     'owner_id': current_user.id
+    #     'user_id' : current_user.id,
+    #     'post_id' : form.data['post_id'],
+    #     'description' : form.data["description"],
+    #     'created_at' : datetime.now()
     # }
-    new_comment = form.data
-    # new_comment = request.json
 
-    # comment = Comment(user_id=new_comment['user_id'], post_id=new_comment['post_id'], description=new_comment['description'], createdAt=datetime.now())
-# @comment_routes.route('/new', methods=['POST'])
-# @login_required
-# def new_post():
-#     if "image" not in request.files:
-#         return {"errors": "image required"}, 400
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id = current_user.id,
+            post_id = form.data['post_id'],
+            description = form.data["description"],
+            created_at = datetime.now()
+        )
 
-#     image = request.files["image"]
+        db.session.add(new_comment)
+        db.session.commit()
 
-#     if not allowed_file(image.filename):
-#         return {"errors": "file type not permitted"}, 400
+        return new_comment.to_dict()
 
-#     image.filename = get_unique_filename(image.filename)
-
-#     upload = upload_file_to_s3(image)
-#     if "url" not in upload:
-#         return upload, 400
-
-#     url = upload["url"]
-
-#     new_post = Post(user_id=current_user.id, media_url=url, description=request.form.get('description'), created_at=datetime.now())
-#     db.session.add(new_post)
-#     db.session.commit()
-
-#     return new_post.to_dict()
-
-
-# @comment_routes.route('/<int:post_id>', methods=['DELETE'])
-# @login_required
-# def delete_post(post_id):
-#     post_remove = Post.query.get(post_id)
-
-#     db.session.delete(post_remove)
-#     db.session.commit()
-#     return {'id': post_id}
-
-# @comment_routes.route('/<int:post_id>', methods=['PUT'])
-# @login_required
-# def edit_post(post_id):
-
-#     data = request.json
-
-#     edit_post = Post.query.get(post_id)
-
-#     edit_post.description = request.json['description']
-
-#     db.session.commit()
-
-#     return edit_post.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)},401

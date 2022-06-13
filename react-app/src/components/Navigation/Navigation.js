@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import NewPostModal from './NewPostModal/NewPostModal';
 import User from '../User/User';
 import "./Navigation.css";
-
+import UserProfileModal from "./UserProfileModal/UserProfileModal";
+import { homeActive, homeIcon } from "./NavIcons";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -17,8 +19,8 @@ const Navigation = () => {
     return (
         <div className="nav-main">
             <div className="nav-mid">
-                <div>
-                    <h3>LOGO</h3>
+                <div className="nav-logo">
+                    <h3 onClick={() => history.push("/")}>Instagramom</h3>
                 </div>
                 <div className="search-container" >
                     <input
@@ -30,13 +32,24 @@ const Navigation = () => {
 
                 </div>
 
-                <div className="nav-right">
-                    <h3>Icons</h3>
+                <div className="nav-home">
+                    {path === '/' ? (
+                        <div onClick={() => history.push("/")}>
+                            { homeActive }
+                        </div>
+                    ) : (
+                        <div onClick={() => history.push("/")}>
+                            {homeIcon}
+                        </div>
+                    )}
+                </div>
+
+                <div className="nav-new-post">
                     <NewPostModal />
                 </div>
 
                 <div>
-                    <User />
+                    <UserProfileModal user={user} />
                 </div>
 
             </div>

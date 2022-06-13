@@ -85,3 +85,7 @@
     border-radius: 50%;
     user-select: none;
 }
+
+.post-icon {
+    cursor: pointer;
+}

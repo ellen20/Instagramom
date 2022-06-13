@@ -62,3 +62,36 @@
     text-align: left;
     padding: 18px 12px;
 }
+
+#nav-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#nav-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: transparent;
+}
+
+#nav-modal-content {
+    position: absolute;
+    top: 54px;
+    margin-left: 750px;
+    width: 230px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px 2px #f0f0f0;
+    color: #262626;
+}

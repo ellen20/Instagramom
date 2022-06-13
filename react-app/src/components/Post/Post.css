@@ -1,0 +1,33 @@
+.all-posts {
+    padding-top: 55px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    min-height: calc(100vh - 50px);
+    position: relative;
+}
+
+.p-main-top {
+    padding-bottom: 50px;
+}
+
+.post-card {
+    margin-top: 40px !important;
+    width: 100%;
+    height: 598x;
+    border: 0.5px solid #dbdbdb;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: #ffffff;
+    position: relative;
+    flex-direction: column;
+}
+
+.post-mid {
+width: 50%;
+}
+
+.post-img {
+    width: 100%;
+}
