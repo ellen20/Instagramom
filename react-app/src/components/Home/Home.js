@@ -16,7 +16,7 @@ const Home = () => {
                 <Post />
             </div>
             <div className="user-list-section">
-                <UserList />
+                {/* <UserList /> */}
             </div>
         </div>
     )

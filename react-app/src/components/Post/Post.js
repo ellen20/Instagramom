@@ -56,7 +56,8 @@ const Post = () => {
                         </div>
 
                         <div className="post-bottom">
-                            <div className="post-bottom-icons">
+                            <div className="post-bottom-icons"
+                                onClick = {() => history.push(`/posts/${post.id}`) }>
                                 {comment_icon_black}
                             </div>
 

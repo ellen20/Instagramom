@@ -9,6 +9,7 @@ import Navigation from './components/Navigation/Navigation';
 import Post from './components/Post/Post';
 import Home from "./components/Home/Home";
 import { authenticate } from './store/session';
+import PostComment from './components/PostComment/PostComment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,7 +45,7 @@ function App() {
 
         <ProtectedRoute path="/posts/:postId" exact={true}>
           <Navigation />
-          <Post />
+          <PostComment />
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId' exact={true} >
