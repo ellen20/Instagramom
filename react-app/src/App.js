@@ -12,16 +12,19 @@ import { authenticate } from './store/session';
 import PostComment from './components/PostComment/PostComment';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import { getAllPosts } from './store/post';
+// import { getComments } from './store/comment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts)
+  const comments = useSelector(state => state.comments)
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
       await dispatch(getAllPosts());
+      // await dispatch(getComments())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -49,7 +52,7 @@ function App() {
 
         <ProtectedRoute path="/posts/:postId" exact={true}>
           <Navigation />
-          <PostComment posts={posts}/>
+          <PostComment posts={posts} />
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId' exact={true} >
