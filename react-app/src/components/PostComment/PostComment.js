@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "./PostComment.css";
 import { getOnePost, getAllPosts } from '../../store/post';
 import Comment from "../Comment/Comment";
-import { postComment, deleteComment } from "../../store/comment";
+import { postComment, deleteComment, getComments } from "../../store/comment";
 import { useParams } from 'react-router-dom';
 import { comment_icon_black } from "../Post/PostIcons";
 import EditCommentModal from "./EditCommentModal/EditCommentModal";
@@ -17,22 +17,17 @@ const PostComment = ({posts}) => {
     // const posts = useSelector(state => Object.values(state?.posts))
     const comments = useSelector(state => Object.values(state?.comments))
     const postsArr = Object.values(posts)
+
     const params = useParams()
     const post_id = params.postId
     const spec_post = postsArr.find(post => post.id == post_id);
     const spec_comments = comments?.filter(comment => comment.post_id == post_id)
     const [comment, setComment] = useState("");
 
-    // useEffect( () => {
-    //     // console.log("??????", post_id)
-    //     // let res = await dispatch(getOnePost(post_id));
-    //     (async () => {
+    useEffect(() => {
+        dispatch(getComments(post_id))
+    }, [dispatch])
 
-    //         await dispatch(getAllPosts());
-    //         console.log("??????", posts)
-    //         //
-    //     })()
-    // },[dispatch, posts])
     if (!posts[post_id]) {
             history.push("/page-not-found");
         }
@@ -64,7 +59,8 @@ const PostComment = ({posts}) => {
                 <div className="comments-list" key={idx}>
 
                     <div>
-                        {comment.user_id}
+                        <img className="comment-user-img" src={comment.image_url}></img>
+                        {comment.username}
                     </div>
                     <div>
                         {comment.description}

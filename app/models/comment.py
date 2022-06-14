@@ -16,7 +16,10 @@ class Comment(db.Model):
             'post_id': self.post_id,
             'description': self.description,
             'created_at': self.created_at,
+            "username": self.user.username,
+            "image_url": self.user.image_url
         }
+
 
     user = db.relationship("User", back_populates="comment")
     post = db.relationship("Post", back_populates="comment")

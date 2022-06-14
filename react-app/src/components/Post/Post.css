@@ -31,3 +31,9 @@ width: 100%;
 .post-img {
     width: 100%;
 }
+
+.post-user-img {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+}

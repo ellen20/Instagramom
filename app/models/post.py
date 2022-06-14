@@ -16,9 +16,8 @@ class Post(db.Model):
             'media_url': self.media_url,
             'description': self.description,
             'created_at': self.created_at,
-            # 'user': self.user.to_dict()
             "username": self.user.username,
-
+            "image_url": self.user.image_url
         }
 
     user = db.relationship("User", back_populates='post')

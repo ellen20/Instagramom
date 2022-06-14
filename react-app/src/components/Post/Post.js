@@ -33,7 +33,8 @@ const Post = () => {
                     <div className="post-card">
                         <div className="post-top">
                             <div className="post-user">
-                                {post?.user_id}
+                                <img className="post-user-img" src={post.image_url}></img>
+                                {post?.username}
                             </div>
                             {user_id === post.user_id ? (
 
