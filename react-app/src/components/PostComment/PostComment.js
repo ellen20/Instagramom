@@ -56,10 +56,10 @@ const PostComment = () => {
                         {comment.description}
                     </div>
                     <div>
-                        {comment.created_at}
+                        {/* {comment.created_at} */}
                     </div>
 
-                    <div className="delete-comment">
+                    {/* <div className="delete-comment"> */}
                         {current_user_id == comment.user_id && (
                             <>
                             <div className="delete-comment">
@@ -72,10 +72,10 @@ const PostComment = () => {
                            </div>
                             </>
                         )}
-                    </div>
+                    {/* </div> */}
                 </div>
                 )}
-            </div>
+
 
             <div className="input-comment">
                 <input
@@ -92,8 +92,8 @@ const PostComment = () => {
                     Post
                 </div>
             </div>
-
         </div>
+    </div>
     )
 }
 

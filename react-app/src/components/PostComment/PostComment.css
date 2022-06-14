@@ -1,0 +1,17 @@
+.post-comments {
+    display: flex;
+    flex-direction: row;
+}
+
+.comments-left {
+
+    position: relative;
+    top: 80px;
+}
+
+.comments-right {
+    height: 100%;
+
+    position: relative;
+    top: 80px;
+}

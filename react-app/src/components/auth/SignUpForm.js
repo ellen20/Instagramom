@@ -20,9 +20,12 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, fullname, email, password));
+
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Passwords must be matched.'])
     }
   };
 
@@ -117,7 +120,7 @@ const SignUpForm = () => {
           Sign Up
         </button>
 
-        <div className='sigup-errors'>
+        <div className='login-errors'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}

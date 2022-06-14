@@ -21,7 +21,7 @@ const editedPost = (post) => ({
     payload: post,
 });
 
-export const getAllPosts = () => async (dispatch) => {
+export const getAllPosts = (user_id) => async (dispatch) => {
     const res = await fetch("/api/posts/all")
     const data = await res.json()
     if (res.ok) {
