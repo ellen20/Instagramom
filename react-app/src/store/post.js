@@ -51,6 +51,7 @@ export const uploadPost = (post) => async (dispatch) => {
 };
 
 export const editPost = (id, post) => async (dispatch) => {
+
     const res = await fetch(`/api/posts/${id}`, {
         method: "PUT",
         headers: {

@@ -4,14 +4,14 @@ from app.models import Post, Follow, User, db, Comment, Like
 from datetime import datetime
 from app.aws_s3 import *
 from sqlalchemy import desc, asc
-from app.forms import NewCommentForm
+from app.forms import NewCommentForm, EditCommentForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/<int:post_id>')
 @login_required
-def post_comments(post_id):
+def get_post_comments(post_id):
 
     comments = Comment.query.filter(Comment.post_id == post_id).order_by(Comment.id.desc()).all()
     return {"comments": [ comment.to_dict() for comment in comments ]}
@@ -49,13 +49,13 @@ def delete_comment(comment_id):
 @comment_routes.route('/<int:comment_id>', methods=['PUT'])
 @login_required
 def edit_comment(comment_id):
+    form = EditCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    data = request.json
+    if form.validate_on_submit():
+        edit_comment = Comment.query.get(comment_id)
+        edit_comment.description = form.data['description']
 
-    edit_post = Post.query.get(comment_id)
-
-    edit_post.description = request.json['description']
-
-    db.session.commit()
-
-    return edit_post.to_dict()
+        db.session.commit()
+        return edit_comment.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)},401

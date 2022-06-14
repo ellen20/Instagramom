@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./Post.css";
 import { getAllPosts } from "../../store/post";
-import { deletePost, editPost } from "../../store/post";
+import { deletePost } from "../../store/post";
 import EditPostModal from "./EditPostModal/EditPostModal";
 import Comment from "../Comment/Comment";
-import { getAllComments } from "../../store/comment";
 import { comment_icon_black, comment_icon_gray } from "./PostIcons";
+import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
 
 const Post = () => {
     const history = useHistory();
@@ -15,7 +15,6 @@ const Post = () => {
     const [users, setUsers] = useState([]);
     const user_id = useSelector(state => state.session?.user?.id)
     const posts = useSelector(state => Object.values(state?.posts))
-    // const comments = useSelector(state => Object.values(state?.comments))
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -39,6 +38,7 @@ const Post = () => {
                             {user_id === post.user_id ? (
 
                             <div className="post-top-right">
+                                <PostOptionsModal post={post}/>
                                 <button className="post-delete" value={post.id} onClick={e => postDelete(e)}>delete</button>
                                 <EditPostModal post={post} />
                             </div>

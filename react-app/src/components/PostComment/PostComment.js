@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./PostComment.css";
-import { getAllPosts } from "../../store/post";
 import { deletePost, editPost } from "../../store/post";
 import Comment from "../Comment/Comment";
 import { postComment, deleteComment } from "../../store/comment";
 import { useParams } from 'react-router-dom';
 import { comment_icon_black } from "../Post/PostIcons";
+import EditCommentModal from "./EditCommentModal/EditCommentModal";
 
 const PostComment = () => {
     const history = useHistory();
@@ -47,7 +47,7 @@ const PostComment = () => {
             <div className="comments-right">
 
                 {spec_comments?.map((comment, idx) =>
-                    <div className="comments-list" key={idx}>
+                <div className="comments-list" key={idx}>
 
                     <div>
                         {comment.user_id}
@@ -61,16 +61,19 @@ const PostComment = () => {
 
                     <div className="delete-comment">
                         {current_user_id == comment.user_id && (
+                            <>
                             <div className="delete-comment">
                                 <button value={comment.id} onClick={e => commentDelete(e)}>
                                     Delete
                                 </button>
-
                             </div>
-
+                            <div className="edit-comment">
+                                    <EditCommentModal comment={comment}/>
+                           </div>
+                            </>
                         )}
                     </div>
-                    </div>
+                </div>
                 )}
             </div>
 

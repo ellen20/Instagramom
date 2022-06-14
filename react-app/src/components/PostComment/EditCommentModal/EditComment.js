@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editPost } from "../../../store/post";
+import { editComment } from '../../../store/comment';
+import EditCommentModal from "./EditCommentModal";
 
 
-const EditPost = ({ setShowModal, post }) => {
+const EditComment = ({ setShowModal, comment }) => {
     const dispatch = useDispatch();
     const [url, setUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("");
@@ -16,28 +17,38 @@ const EditPost = ({ setShowModal, post }) => {
         setErrors([]);
     }, [url]);
 
-    const postEdit = () => {
+    const commentEdit = (e) => {
+
         let errorr = [];
 
         if (description.length > 400) {
-            errorr.push("Caption cannot be over 400 characters.");
+            errorr.push("Comment cannot be over 400 characters.");
+        }
+
+        if (description.length < 1) {
+            errorr.push("Please input the comment.");
         }
 
         if (errorr.length > 0) {
             return setErrors(errorr);
         }
 
-        const posts = {
+        const comment_edit = {
             description: description,
         };
 
-        dispatch(editPost(post.id, posts))
-        setShowModal(false)
-    };
-
+        dispatch(editComment(comment.id, comment_edit))
+        .then(setShowModal(false))
+    }
 
     return (
         <>
+            <div className='edit-comment-errors'>
+                {errors?.map((error, ind) => (
+                    <div className='comment-err-msg' key={ind}>{error}</div>
+                ))}
+            </div>
+
             <div className="close-modal">
                 <img
                     className="close-modal-img"
@@ -52,12 +63,14 @@ const EditPost = ({ setShowModal, post }) => {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         className="new-post-desc"
-                        placeholder={post.description}
+                        placeholder={comment.description}
                         maxLength="400" />
                 </div>
 
-                <div className="edit-post-submit" onClick={postEdit}>
-                    Submit
+                <div className="edit-post-submit"
+                        onClick={commentEdit}
+                        disabled={description.length < 1}>
+                        Submit
                 </div>
 
             </div>
@@ -65,4 +78,4 @@ const EditPost = ({ setShowModal, post }) => {
     );
 };
 
-export default EditPost;
+export default EditComment;
