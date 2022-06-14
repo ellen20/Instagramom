@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -10,14 +10,18 @@ import Post from './components/Post/Post';
 import Home from "./components/Home/Home";
 import { authenticate } from './store/session';
 import PostComment from './components/PostComment/PostComment';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import { getAllPosts } from './store/post';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const posts = useSelector(state => state.posts)
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(getAllPosts());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -45,13 +49,17 @@ function App() {
 
         <ProtectedRoute path="/posts/:postId" exact={true}>
           <Navigation />
-          <PostComment />
+          <PostComment posts={posts}/>
         </ProtectedRoute>
 
         <ProtectedRoute path='/users/:userId' exact={true} >
           <Navigation />
           <User />
         </ProtectedRoute>
+
+        <Route path="/page-not-found">
+          <PageNotFound />
+        </Route>
 
       </Switch>
     </BrowserRouter>

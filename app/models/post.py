@@ -15,7 +15,10 @@ class Post(db.Model):
             'user_id': self.user_id,
             'media_url': self.media_url,
             'description': self.description,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            # 'user': self.user.to_dict()
+            "username": self.user.username,
+
         }
 
     user = db.relationship("User", back_populates='post')

@@ -17,7 +17,7 @@ const Post = () => {
     const posts = useSelector(state => Object.values(state?.posts))
 
     useEffect(() => {
-        dispatch(getAllPosts(user_id))
+        dispatch(getAllPosts())
     }, [dispatch])
 
 

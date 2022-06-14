@@ -8,9 +8,18 @@ from sqlalchemy import desc, asc
 post_routes = Blueprint('posts', __name__)
 
 @post_routes.route("/all")
-def post_all():
+def get_post_all():
     posts = Post.query.order_by(desc(Post.id))
     return {"posts": [ post.to_dict() for post in posts ]}
+
+@post_routes.route("/<int:post_id>")
+def get_one_post(post_id):
+    post = Post.query.get(post_id)
+    print("==========",post)
+    # if post:
+    return {"post": post }
+    # else:
+    #     return {"errors": ["Not found"]}, 404
 
 @post_routes.route('/new', methods=['POST'])
 @login_required
