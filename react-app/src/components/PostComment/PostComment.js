@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./PostComment.css";
-import { deletePost, editPost } from "../../store/post";
+import { getOnePost } from '../../store/post';
 import Comment from "../Comment/Comment";
 import { postComment, deleteComment } from "../../store/comment";
 import { useParams } from 'react-router-dom';
@@ -22,6 +22,15 @@ const PostComment = () => {
     const spec_post = posts.find(post => post.id == post_id);
     const spec_comments = comments?.filter(comment => comment.post_id == post_id)
     const [comment, setComment] = useState("");
+
+    useEffect(async () => {
+        console.log("??????", post_id)
+        let res = await dispatch(getOnePost(post_id));
+
+        if (res.ok) {
+            history.push("/page-not-found");
+        }
+    })
 
     const newComment = () => {
         const new_comment = {

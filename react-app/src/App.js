@@ -10,6 +10,7 @@ import Post from './components/Post/Post';
 import Home from "./components/Home/Home";
 import { authenticate } from './store/session';
 import PostComment from './components/PostComment/PostComment';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,10 @@ function App() {
           <Navigation />
           <User />
         </ProtectedRoute>
+
+        <Route path="/page-not-found">
+          <PageNotFound />
+        </Route>
 
       </Switch>
     </BrowserRouter>

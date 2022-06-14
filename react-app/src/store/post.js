@@ -1,4 +1,5 @@
 const GET_ALL_POSTS = 'post/GET_ALL_POSTS';
+const GET_ONE_POST = 'post/GET_ONE_POST ';
 const CREATE_POST = 'post/CREATE_POST';
 const DELETE_POST = 'post/DELETE_POST';
 const EDITED_POST = 'post/EDITED_POST';
@@ -6,6 +7,11 @@ const EDITED_POST = 'post/EDITED_POST';
 const getAll = (posts) => ({
     type: GET_ALL_POSTS,
     payload: posts,
+})
+
+const getOne = (post) => ({
+    type: GET_ONE_POST,
+    payload: post,
 })
 
 const createNewPost = (post) => ({
@@ -21,7 +27,7 @@ const editedPost = (post) => ({
     payload: post,
 });
 
-export const getAllPosts = (user_id) => async (dispatch) => {
+export const getAllPosts = () => async (dispatch) => {
     const res = await fetch("/api/posts/all")
     const data = await res.json()
     if (res.ok) {
@@ -29,6 +35,19 @@ export const getAllPosts = (user_id) => async (dispatch) => {
     } else {
         return data
     }
+}
+
+export const getOnePost = (id) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${id}`)
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(getOne(data.post))
+        return data
+    }
+    // } else {
+    //     return data
+    // }
 }
 
 export const uploadPost = (post) => async (dispatch) => {
@@ -88,6 +107,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_POSTS:
             action.payload.map(post => newState[post.id] = post)
+            return newState
+        case GET_ONE_POST:
+            newState[action.payload.id] = action.payload
             return newState
         case CREATE_POST:
             newState[action.payload.id] = action.payload
