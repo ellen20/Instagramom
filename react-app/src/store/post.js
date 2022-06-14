@@ -43,11 +43,11 @@ export const getOnePost = (id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(getOne(data.post))
-        return data
+        return null
+
+    } else {
+        return res
     }
-    // } else {
-    //     return data
-    // }
 }
 
 export const uploadPost = (post) => async (dispatch) => {
