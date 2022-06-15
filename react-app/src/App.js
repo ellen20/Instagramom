@@ -65,7 +65,7 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        <Route path="/page-not-found">
+        <Route>
           <PageNotFound />
         </Route>
 

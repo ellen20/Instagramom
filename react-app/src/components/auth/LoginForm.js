@@ -12,6 +12,7 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
+  const date = new Date();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-
+//Demo User Login
   const demoLogin = async () => {
     await dispatch(login("demo@aa.io", "password"));
   };
@@ -41,16 +42,17 @@ const LoginForm = () => {
     <div className='login-page'>
 
       <div className='login-page-left'>
-        <img className='login-img' src='https://t4.ftcdn.net/jpg/01/10/52/05/240_F_110520599_LSEtlBbLG09ZXiiWbTubjqEpD2jeCBZO.jpg'></img>
+        <img className='login-img' src='https://shop.urbanmamaz.com/wp-content/uploads/2021/07/Instagram-story-srickers-BABY.jpg'></img>
       </div>
 
       <div className="login-page-right">
 
         <div className="login-top">
-          <img
+          <p>Instagramom</p>
+          {/* <img
             className="login-logo"
             src=""
-          />
+          /> */}
         </div>
 
         <form onSubmit={onLogin} className="login-form">
@@ -105,9 +107,36 @@ const LoginForm = () => {
             </span>
           </div>
         </div>
-
       </div>
+
+      <div className="login-about">
+        <div className="h-about" onClick={() => history.push("/about")}>
+          About
+        </div>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-linkedin"
+          href=""
+          target="_blank"
+        >
+          Linkedin
+        </a>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-github"
+          href="https://github.com/ellen20"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </div>
+
+      <div className="l-copyright" onClick={() => history.push("/about")}>
+        © {date.getFullYear()} Instagranmom by Jingling Jin
+      </div>
+
     </div>
+
   );
 };
 

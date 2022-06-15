@@ -53,7 +53,7 @@ const PostOptions = ({ post, setShowModal }) => {
 
     return (
         <div className="options-modal">
-            {!openDel & !openEdit &&(
+            {!openDel && !openEdit &&(
 
                 <div className="hide-options">
                     <div onClick={openDelModal} className="delete-post">

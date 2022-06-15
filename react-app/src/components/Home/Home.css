@@ -10,12 +10,3 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-
-.post-img {
-    max-height: 767px;
-    min-height: 600px;
-    width: 100%;
-    object-fit: cover;
-    user-select: none;
-    cursor: pointer;
-}

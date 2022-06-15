@@ -17,6 +17,13 @@ const Post = () => {
     const posts = useSelector(state => Object.values(state?.posts))
     const [showOptions, setShowOptions] = useState(false);
 
+    const sortedPosts = posts.sort((a, b) =>
+        b.created_at.localeCompare(a.created_at)
+    );
+    // const qOwnerId = questions[questionId]?.owner_id;
+
+
+
     useEffect(() => {
         dispatch(getAllPosts())
     }, [dispatch])
@@ -49,44 +56,14 @@ const Post = () => {
                                 {post?.username}
                             </div>
                             {user_id === post.user_id ? (
-
-                            <div className="post-top-right">
-                                    {/* <img
-                                        className="post-options2"
-                                        onClick={openPostOptions}
-                                        src="https://img.icons8.com/material-two-tone/24/000000/more.png"
-                                    /> */}
-                                <PostOptionsModal post={post}/>
-                                {/* <button className="post-delete" value={post.id} onClick={e => postDelete(e)}>delete</button>
-                                <EditPostModal post={post} /> */}
-                                    {/* {showOptions && (
-                                        <>
-                                            <div className="background">
-                                                <div className="postOptionsModal">
-                                                    <div
-                                                        onClick={() => setShowOptions(false)}
-                                                        className="postOptionsModalBckg"
-                                                    ></div>
-                                                    <div className="actualModalComponent">
-                                                        <PostModal post={post} setShowOptions={closePostOptions} />
-                                                        <div
-                                                            className="cancelPostButton"
-                                                            onClick={() => setShowOptions(false)}
-                                                        >
-                                                            Cancel
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </>
-                                    )} */}
-
-                            </div>
+                                <div className="post-top-right">
+                                    <PostOptionsModal post={post}/>
+                                </div>
                             ): null}
                         </div>
 
                         <div className="post-mid">
-                            <div className="post-img">
+                            <div>
                                 <img className="post-img" src={post?.media_url}></img>
                             </div>
                             <div className="post-description">

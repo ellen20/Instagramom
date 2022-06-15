@@ -72,11 +72,11 @@ export const closeIcon = (
         aria-label="Close"
         className="fg7vo5n6 lrzqjn8y"
         color="#000000"
-        fill="#ffffff"
+        fill="#000000"
         height="18"
         role="img"
         viewBox="0 0 48 48"
-        width="18"
+        width="10"
     >
         <title>Close</title>
         <path

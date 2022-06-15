@@ -44,72 +44,70 @@ const PostComment = ({posts}) => {
     }
 
     const commentDelete = (e) => {
-
         let id = e.currentTarget.value;
-        console.log("LLLLL", id)
         dispatch(deleteComment(id))
     }
 
     return (
-        <div className="post-comments">
-            <div className="comments-left">
-                <img className="comment-img" src={spec_post?.media_url}></img>
-            </div>
-
-            <div className="comments-right">
-                <div className="comments-user">
-                    <img className="comments-user-img" src={spec_post?.image_url}></img>
-                    {spec_post?.username}
+        <div className="post-main">
+            <div className="post-comments">
+                <div className="comments-left">
+                    <img className="comment-img" src={spec_post?.media_url}></img>
                 </div>
-                {spec_comments?.map((comment, idx) =>
-                <div className="comments-list" key={idx}>
 
-                    <div className="comment-user">
-                        <img className="comment-user-img" src={comment.image_url}></img>
-                        {comment.username}
-                        <span>{comment.description}</span>
-
-                    <div>
-                        {/* {comment.created_at} */}
+                <div className="comments-right">
+                    <div className="comments-user">
+                        <img className="comments-user-img" src={spec_post?.image_url}></img>
+                        {spec_post?.username}
                     </div>
 
-                    {/* <div className="delete-comment"> */}
-                        {current_user_id == comment.user_id && (
-                            <>
-                            {/* <div className="delete-comment"> */}
-                                    <button className="delete-comment" value={comment.id} onClick={e => commentDelete(e)}>
-                                    {closeIcon}
-                                </button>
-                            {/* </div> */}
-                            <div className="edit-comment">
-                                    <EditCommentModal comment={comment}/>
-                           </div>
-                            </>
+                    <div className="comments-section">
+                        {spec_comments?.map((comment, idx) =>
+                            <div className="comments-list" key={idx}>
+
+                                <div className="comment-user">
+                                    <div className="comment-user-info">
+                                        <img className="comment-user-img" src={comment.image_url}></img>
+                                        {comment.username}
+                                    </div>
+                                    <div className="comment">
+                                        {comment.description}
+                                        <span className="create-time">({comment.created_at})</span>
+                                            {current_user_id == comment.user_id && (
+                                            <>
+                                                <button className="delete-comment" value={comment.id} onClick={e => commentDelete(e)}>
+                                                    {closeIcon}
+                                                </button>
+
+                                                <div className="edit-comment">
+                                                    <EditCommentModal comment={comment}/>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         )}
-                    {/* </div> */}
                     </div>
-                </div>
-                )}
-
-
-            <div className="comment-right-bot">
-                <input
-                    className="input-comment"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Add a comment..."
-                    maxLength="400"
-                >
-                </input>
-                <div
-                    className="comment-submit"
-                    onClick={(e) => newComment(e)}
-                >
-                    Post
+                    <div className="comment-right-bot">
+                        <input
+                            className="input-comment"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                            placeholder="Add a comment..."
+                            maxLength="400"
+                        >
+                        </input>
+                        <div
+                            className="comment-submit"
+                            onClick={(e) => newComment(e)}
+                        >
+                            Post
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 

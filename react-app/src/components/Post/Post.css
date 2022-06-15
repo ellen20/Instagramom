@@ -32,7 +32,11 @@ width: 100%;
 }
 
 .post-img {
+    max-height: 470px;
+    min-height: 600px;
     width: 100%;
+    object-fit: cover;
+    user-select: none;
 }
 
 .post-user-img {
