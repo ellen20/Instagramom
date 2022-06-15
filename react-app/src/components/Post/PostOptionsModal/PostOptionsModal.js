@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { NavModal } from "../../../context/NavModal";
 import { Modal } from "../../../context/Modal";
 import PostOptions from "./PostOptions";
 
 const PostOptionsModal = ({ post }) => {
-      const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const closeModal = () => {
+        if (!showModal) return; // do nothing if modal already closed
+        setShowModal(false); // else close modal
 
+    };
     return (
         <>
             <img
@@ -14,7 +19,7 @@ const PostOptionsModal = ({ post }) => {
             />
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    {/* <PostOptions post={post} /> */}
+                    <PostOptions post={post} setShowModal={closeModal} />
                 </Modal>
             )}
         </>

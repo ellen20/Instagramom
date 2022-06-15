@@ -6,7 +6,7 @@ import { getOnePost, getAllPosts } from '../../store/post';
 import Comment from "../Comment/Comment";
 import { postComment, deleteComment, getComments } from "../../store/comment";
 import { useParams } from 'react-router-dom';
-import { comment_icon_black } from "../Post/PostIcons";
+import { closeIcon, comment_icon_black } from "../Post/PostIcons";
 import EditCommentModal from "./EditCommentModal/EditCommentModal";
 
 const PostComment = ({posts}) => {
@@ -44,27 +44,31 @@ const PostComment = ({posts}) => {
     }
 
     const commentDelete = (e) => {
+
         let id = e.currentTarget.value;
+        console.log("LLLLL", id)
         dispatch(deleteComment(id))
     }
 
     return (
         <div className="post-comments">
             <div className="comments-left">
-                <img src={spec_post?.media_url}></img>
+                <img className="comment-img" src={spec_post?.media_url}></img>
             </div>
-            <div className="comments-right">
 
+            <div className="comments-right">
+                <div className="comments-user">
+                    <img className="comments-user-img" src={spec_post?.image_url}></img>
+                    {spec_post?.username}
+                </div>
                 {spec_comments?.map((comment, idx) =>
                 <div className="comments-list" key={idx}>
 
-                    <div>
+                    <div className="comment-user">
                         <img className="comment-user-img" src={comment.image_url}></img>
                         {comment.username}
-                    </div>
-                    <div>
-                        {comment.description}
-                    </div>
+                        <span>{comment.description}</span>
+
                     <div>
                         {/* {comment.created_at} */}
                     </div>
@@ -72,23 +76,25 @@ const PostComment = ({posts}) => {
                     {/* <div className="delete-comment"> */}
                         {current_user_id == comment.user_id && (
                             <>
-                            <div className="delete-comment">
-                                <button value={comment.id} onClick={e => commentDelete(e)}>
-                                    Delete
+                            {/* <div className="delete-comment"> */}
+                                    <button className="delete-comment" value={comment.id} onClick={e => commentDelete(e)}>
+                                    {closeIcon}
                                 </button>
-                            </div>
+                            {/* </div> */}
                             <div className="edit-comment">
                                     <EditCommentModal comment={comment}/>
                            </div>
                             </>
                         )}
                     {/* </div> */}
+                    </div>
                 </div>
                 )}
 
 
-            <div className="input-comment">
+            <div className="comment-right-bot">
                 <input
+                    className="input-comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Add a comment..."

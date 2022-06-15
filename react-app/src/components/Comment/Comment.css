@@ -1,6 +1,13 @@
-.input-comment {
-    /* display: flex;
-    justify-content: space-around; */
+.post-comment-main {
+    padding: 8px;
+}
+.input-comments {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    border-top: 1px solid rgb(224, 222, 222);
+    margin-top: 8px;
 }
 
 .comment-submit {

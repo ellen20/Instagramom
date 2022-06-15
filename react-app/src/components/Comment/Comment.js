@@ -38,8 +38,9 @@ const Comment = ({post}) => {
             {spec_comments?.map(comment => (
                <div>{comment.description}</div>
             ))}
-            <div className="input-comment">
+            <div className="input-comments">
                 <input
+                    className="input-comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Add a comment..."

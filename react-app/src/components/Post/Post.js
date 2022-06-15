@@ -8,13 +8,14 @@ import EditPostModal from "./EditPostModal/EditPostModal";
 import Comment from "../Comment/Comment";
 import { comment_icon_black, comment_icon_gray } from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
-
+import PostModal from "./PostModal/PostModal";
 const Post = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [users, setUsers] = useState([]);
     const user_id = useSelector(state => state.session?.user?.id)
     const posts = useSelector(state => Object.values(state?.posts))
+    const [showOptions, setShowOptions] = useState(false);
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -26,8 +27,19 @@ const Post = () => {
        dispatch(deletePost(id))
     }
 
+    const openPostOptions = () => {
+        setShowOptions(true)
+    }
+
+    const closePostOptions = () => {
+        if (!showOptions) return; // do nothing if modal already closed
+        setShowOptions(false); // else close modal
+
+    };
+
     return (
         <div className="all-posts">
+
             {posts?.map(post => (
                 <div className="post-main">
                     <div className="post-card">
@@ -39,9 +51,36 @@ const Post = () => {
                             {user_id === post.user_id ? (
 
                             <div className="post-top-right">
+                                    {/* <img
+                                        className="post-options2"
+                                        onClick={openPostOptions}
+                                        src="https://img.icons8.com/material-two-tone/24/000000/more.png"
+                                    /> */}
                                 <PostOptionsModal post={post}/>
-                                <button className="post-delete" value={post.id} onClick={e => postDelete(e)}>delete</button>
-                                <EditPostModal post={post} />
+                                {/* <button className="post-delete" value={post.id} onClick={e => postDelete(e)}>delete</button>
+                                <EditPostModal post={post} /> */}
+                                    {/* {showOptions && (
+                                        <>
+                                            <div className="background">
+                                                <div className="postOptionsModal">
+                                                    <div
+                                                        onClick={() => setShowOptions(false)}
+                                                        className="postOptionsModalBckg"
+                                                    ></div>
+                                                    <div className="actualModalComponent">
+                                                        <PostModal post={post} setShowOptions={closePostOptions} />
+                                                        <div
+                                                            className="cancelPostButton"
+                                                            onClick={() => setShowOptions(false)}
+                                                        >
+                                                            Cancel
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )} */}
+
                             </div>
                             ): null}
                         </div>

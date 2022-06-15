@@ -1,18 +1,21 @@
 .all-posts {
-    padding-top: 55px;
+    padding-top: 30px;
     margin: 0 auto;
     margin-bottom: 40px;
-    min-height: calc(100vh - 50px);
+    /* min-height: calc(100vh - 50px); */
     position: relative;
 }
 
-.p-main-top {
-    padding-bottom: 50px;
+.post-top {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .post-card {
     margin-top: 40px !important;
-    width: 100%;
+    width: 60%;
     height: 598x;
     border: 0.5px solid #dbdbdb;
     display: flex;
@@ -36,4 +39,12 @@ width: 100%;
     border-radius: 50%;
     height: 24px;
     width: 24px;
+}
+
+.post-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
 }

@@ -12,7 +12,7 @@ import { authenticate } from './store/session';
 import PostComment from './components/PostComment/PostComment';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import { getAllPosts } from './store/post';
-// import { getComments } from './store/comment';
+// import EditPost from './components/EditPost/EditPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,7 +24,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(getAllPosts());
-      // await dispatch(getComments())
+
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -54,6 +54,11 @@ function App() {
           <Navigation />
           <PostComment posts={posts} />
         </ProtectedRoute>
+
+        {/* <ProtectedRoute path="/posts/:postId/edit" exact={true}>
+          <Navigation />
+          <EditPost posts={posts} />
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/users/:userId' exact={true} >
           <Navigation />
