@@ -8,7 +8,7 @@ import EditPostModal from "./EditPostModal/EditPostModal";
 import Comment from "../Comment/Comment";
 import { comment_icon_black, comment_icon_gray } from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
-import PostModal from "./PostModal/PostModal";
+
 const Post = () => {
     const history = useHistory();
     const dispatch = useDispatch();
