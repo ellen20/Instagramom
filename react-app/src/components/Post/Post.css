@@ -2,18 +2,22 @@
     padding-top: 5px;
     margin: 0 auto;
     /* margin-bottom: 20px; */
-    /* min-height: calc(100vh - 50px); */
+    min-height: calc(100vh - 50px);
     position: relative;
     background-color: #fafafa;
 }
 
+.post-main {
+    height: auto;
+}
+
 .post-card {
-    margin-top: 40px !important;
-    width: 60%;
-    /* height: 598px; */
+    margin-top: 5em !important;
+    width: 50%;
+    height: auto;
     border: 0.5px solid #dbdbdb;
     display: flex;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     margin: 0 auto;
     background-color: #fafafa;
@@ -50,8 +54,7 @@
 }
 
 .post-img {
-    max-height: 470px;
-    min-height: 600px;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     user-select: none;
