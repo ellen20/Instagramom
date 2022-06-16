@@ -43,12 +43,6 @@ const EditComment = ({ setShowModal, comment }) => {
 
     return (
         <>
-            <div className='edit-comment-errors'>
-                {errors?.map((error, ind) => (
-                    <div className='comment-err-msg' key={ind}>{error}</div>
-                ))}
-            </div>
-
             <div className="close-modal">
                 <img
                     className="close-modal-img"
@@ -59,6 +53,11 @@ const EditComment = ({ setShowModal, comment }) => {
 
             <div className="edit-post-main">
                 <h3>Edit Comment</h3>
+                <div className='edit-comment-errors'>
+                {errors?.map((error, ind) => (
+                    <div className='comment-err-msg' key={ind}>{error}</div>
+                ))}
+                </div>
                 <div className="edit-description">
                     <textarea
                         value={description}
@@ -67,19 +66,19 @@ const EditComment = ({ setShowModal, comment }) => {
                         placeholder={comment.description}
                         maxLength="400" />
                 </div>
+                <div className="buttons">
+                    <div className="edit-post-submit"
+                            onClick={commentEdit}
+                            disabled={description.length < 1}>
+                            Submit
+                    </div>
 
-                <div className="edit-post-submit"
-                        onClick={commentEdit}
-                        disabled={description.length < 1}>
-                        Submit
+                    <div className="cancel"
+                            onClick={() => setShowModal(false)}
+                            disabled={description.length < 1}>
+                            Cancel
+                    </div>
                 </div>
-
-                <div className="cancel"
-                        onClick={() => setShowModal(false)}
-                        disabled={description.length < 1}>
-                        Cancel
-                </div>
-
             </div>
         </>
     );
