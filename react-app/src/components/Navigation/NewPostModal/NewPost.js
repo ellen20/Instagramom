@@ -32,6 +32,14 @@ const NewPost = ({setShowModal}) => {
         if (image === false) {
             errorr.push("Please provide an image file.");
         }
+        else {
+            const allowedImg = ["pdf", "png", "jpg", "jpeg", "gif"]
+            const loadedImg = imgUrl.name.slice(-3);
+
+            if(!allowedImg.includes(loadedImg)){
+                errorr.push("Please provide an valid image file. (Allowed image type: pdf, png, jpg, jpeg, gif)");
+            }
+        }
 
         if (errorr.length > 0) {
             return setErrors(errorr);
@@ -108,26 +116,20 @@ const NewPost = ({setShowModal}) => {
                                 placeholder="Write a caption..."
                                 maxLength="300" />
                         </div>
-                        <div className="new-post-icon">
-
+                        {url.length > 0 ? (
+                            <div
+                                className="remove-image"
+                                onClick={() => {
+                                    setUrl("");
+                                    setImgUrl("");
+                                }}>
+                                Remove Image
+                            </div>
+                        ) : null}
+                        <div className="post-error">
+                            {errors &&
+                            errors.map((err) => <div className="post-error">{err}</div>)}
                         </div>
-                    </div>
-
-                    {url.length > 0 ? (
-                        <div
-                            className="remove-image"
-                            onClick={() => {
-                                setUrl("");
-                                setImgUrl("");
-                            }}
-                        >
-                            Remove Image
-                        </div>
-                    ) : null}
-                    <div className="post-error">
-                    {errors &&
-                        errors.map((err) => <div className="post-error">{err}</div>)}
-
                     </div>
                 </div>
             </div>
