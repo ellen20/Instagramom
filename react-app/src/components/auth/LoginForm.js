@@ -132,7 +132,7 @@ const LoginForm = () => {
       </div>
 
       <div className="l-copyright" onClick={() => history.push("/about")}>
-        © {date.getFullYear()} Instagranmom by Jingling Jin
+        © {date.getFullYear()} Instagramom by Jingling Jin
       </div>
 
     </div>

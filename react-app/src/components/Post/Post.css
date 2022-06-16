@@ -7,14 +7,10 @@
     background-color: #fafafa;
 }
 
-.post-main {
-
-}
-
 .post-card {
     margin-top: 40px !important;
     width: 60%;
-    height: 598x;
+    /* height: 598px; */
     border: 0.5px solid #dbdbdb;
     display: flex;
     border-radius: 8px;
