@@ -45,6 +45,7 @@ const PostOptions = ({ post, setShowModal }) => {
 
     const postDelete = () => {
         dispatch(deletePost(post.id))
+        setShowModal(false)
     }
 
     const closeModal = () => {
