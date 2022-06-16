@@ -23,9 +23,17 @@ const EditPost = ({ setShowModal, post }) => {
             errorr.push("Caption cannot be over 400 characters.");
         }
 
+        if (description.length < 1) {
+            errorr.push("Please input the caption.");
+        }
+
         if (errorr.length > 0) {
             return setErrors(errorr);
         }
+
+        // if (!description) {
+        //     description = post.description
+        // }
 
         const posts = {
             description: description,
@@ -47,12 +55,13 @@ const EditPost = ({ setShowModal, post }) => {
             </div>
 
             <div className="edit-post-main">
+                <h3>Edit Caption</h3>
                 <div className="description">
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         className="new-post-desc"
-                        placeholder={post.description}
+                        placeholder={post?.description}
                         maxLength="400" />
                 </div>
 

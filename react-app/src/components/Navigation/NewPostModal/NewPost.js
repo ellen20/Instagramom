@@ -34,7 +34,7 @@ const NewPost = ({setShowModal}) => {
         }
         else {
             const allowedImg = ["pdf", "png", "jpg", "jpeg", "gif"]
-            const loadedImg = imgUrl.name.slice(-3);
+            const loadedImg = imgUrl.name.slice(-3).toLowerCase();
 
             if(!allowedImg.includes(loadedImg)){
                 errorr.push("Please provide an valid image file. (Allowed image type: pdf, png, jpg, jpeg, gif)");

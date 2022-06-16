@@ -55,18 +55,27 @@ const PostOptions = ({ post, setShowModal }) => {
     return (
         <div className="options-modal">
             {!openDel && !openEdit &&(
+                <>
+                    <div className="close-modal">
+                        <img
+                            className="close-modal-img"
+                            onClick={() => setShowModal(false)}
+                            src="https://img.icons8.com/ios-filled/50/ffffff/multiply.png"
+                        />
+                    </div>
 
-                <div className="hide-options">
-                    <div onClick={openDelModal} className="delete-post">
-                        Delete
+                    <div className="hide-options">
+                        <div onClick={openDelModal} className="delete-post">
+                            Delete
+                        </div>
+                        <div className="edit-post" onClick={openEditModal}>
+                            Edit caption
+                        </div>
+                        <div className="cancle-modal" onClick={closeModal}>
+                            Cancel
+                        </div>
                     </div>
-                    <div className="edit-post" onClick={openEditModal}>
-                        Edit caption
-                    </div>
-                    <div className="goto-post" onClick={closeModal}>
-                        Cancel
-                    </div>
-                </div>
+                </>
             )}
             {openDel && (
                 <>
@@ -83,11 +92,13 @@ const PostOptions = ({ post, setShowModal }) => {
                             Are you sure you want to delete this post?
                         </p>
                     </div>
-                    <div className="post-delete" onClick={postDelete}>
-                        Delete
-                    </div>
-                    <div className="post-delete-cancel" onClick={closeModal}>
-                        Cancel
+                    <div className="buttons">
+                        <div className="post-delete" onClick={postDelete}>
+                            Delete
+                        </div>
+                        <div className="post-delete-cancel" onClick={() => { setOpenDel(false)}}>
+                            Cancel
+                        </div>
                     </div>
                 </>
 
@@ -109,16 +120,18 @@ const PostOptions = ({ post, setShowModal }) => {
                             <textarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="new-post-desc"
+                                className="edit-post-desc"
                                 placeholder={post.description}
                                 maxLength="400" />
                         </div>
 
-                        <div className="edit-post-submit" onClick={postEdit}>
-                            Submit
-                        </div>
-                        <div className="post-delete-cancel" onClick={closeModal}>
-                            Cancel
+                        <div className="buttons">
+                            <div className="edit-post-submit" onClick={postEdit}>
+                                Submit
+                            </div>
+                            <div className="post-delete-cancel" onClick={() => { setOpenEdit(false)}}>
+                                Cancel
+                            </div>
                         </div>
 
                     </div>

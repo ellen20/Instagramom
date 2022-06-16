@@ -1,0 +1,18 @@
+.hide-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.edit-post {
+    border-bottom: 1px, solid, rgb(31, 27, 27);
+}
+
+.edit-post-description {
+    width: 100vw;
+    height: 40vh;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
