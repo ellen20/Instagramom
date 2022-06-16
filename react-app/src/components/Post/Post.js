@@ -25,7 +25,7 @@ const Post = () => {
     return (
         <div className="all-posts">
             {posts?.map(post => (
-                <div className="post-main">
+                // <div className="post-main">
                     <div className="post-card">
                         <div className="post-top">
                             <div className="post-user">
@@ -56,7 +56,7 @@ const Post = () => {
                                 <Comment post={post}/>
                         </div>
                     </div>
-                </div>
+
             ))}
 
         </div>
