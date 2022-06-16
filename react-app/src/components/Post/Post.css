@@ -1,5 +1,5 @@
 .all-posts {
-    padding-top: 30px;
+    /* padding-top: 30px; */
     margin: 0 auto;
     margin-bottom: 40px;
     /* min-height: calc(100vh - 50px); */
@@ -14,7 +14,7 @@
 }
 
 .post-card {
-    margin-top: 40px !important;
+    /* margin-top: 40px !important; */
     width: 60%;
     height: 598x;
     border: 0.5px solid #dbdbdb;
