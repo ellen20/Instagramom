@@ -58,11 +58,12 @@ const EditComment = ({ setShowModal, comment }) => {
             </div>
 
             <div className="edit-post-main">
-                <div className="description">
+                <h3>Edit Comment</h3>
+                <div className="edit-description">
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="new-post-desc"
+                        className="edit-post-desc"
                         placeholder={comment.description}
                         maxLength="400" />
                 </div>
@@ -71,6 +72,12 @@ const EditComment = ({ setShowModal, comment }) => {
                         onClick={commentEdit}
                         disabled={description.length < 1}>
                         Submit
+                </div>
+
+                <div className="cancel"
+                        onClick={() => setShowModal(false)}
+                        disabled={description.length < 1}>
+                        Cancel
                 </div>
 
             </div>

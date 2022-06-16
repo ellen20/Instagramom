@@ -11,12 +11,12 @@ const Post = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session?.user?.id)
-    const posts = useSelector(state => Object.values(state?.posts))
+    const posts = useSelector(state => Object.values(state?.posts)).reverse()
     const [showOptions, setShowOptions] = useState(false);
 
-    const sortedPosts = posts.sort((a, b) =>
-        b.created_at.localeCompare(a.created_at)
-    );
+    // const sortedPosts = posts.sort((a, b) =>
+    //     b.created_at.localeCompare(a.created_at)
+    // );
 
     useEffect(() => {
         dispatch(getAllPosts())

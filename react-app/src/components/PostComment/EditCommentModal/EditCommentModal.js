@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
+import { PostModal } from "../../../context/PostModal";
 import EditComment from "./EditComment";
 
 
@@ -16,9 +17,9 @@ const EditCommentModal = ({ comment }) => {
                 <i class="fa-solid fa-user-pen"></i>
             </button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <PostModal onClose={() => setShowModal(false)}>
                     <EditComment setShowModal={closeModal} comment={comment} />
-                </Modal>
+                </PostModal>
             )}
         </>
     );
