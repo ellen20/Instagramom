@@ -113,7 +113,7 @@ const PostComment = ({posts}) => {
                     </div>
                 </div>
             </div>
-            <div className="login-about">
+            {/* <div className="login-about">
                 <div className="h-about" onClick={() => history.push("/about")}>
                 About
                 </div>
@@ -137,7 +137,7 @@ const PostComment = ({posts}) => {
 
             <div className="l-copyright" onClick={() => history.push("/about")}>
                 © {date.getFullYear()} Instagranmom by Jingling Jin
-            </div>
+            </div> */}
         </div>
     )
 }
