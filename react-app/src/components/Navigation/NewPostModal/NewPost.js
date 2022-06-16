@@ -29,6 +29,10 @@ const NewPost = ({setShowModal}) => {
             errorr.push("Caption cannot be over 400 characters.");
         }
 
+        if (description.length < 1) {
+            errorr.push("Please write a caption.");
+        }
+
         if (image === false) {
             errorr.push("Please provide an image file.");
         }

@@ -8,7 +8,7 @@ const EditComment = ({ setShowModal, comment }) => {
     const dispatch = useDispatch();
     const [url, setUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("");
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState(comment.description);
     const [errors, setErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
     const [image, setImage] = useState(true);
@@ -53,9 +53,9 @@ const EditComment = ({ setShowModal, comment }) => {
 
             <div className="edit-post-main">
                 <h3>Edit Comment</h3>
-                <div className='edit-comment-errors'>
+                <div className='errors'>
                 {errors?.map((error, ind) => (
-                    <div className='comment-err-msg' key={ind}>{error}</div>
+                    <div className='err-msg' key={ind}>{error}</div>
                 ))}
                 </div>
                 <div className="edit-description">
