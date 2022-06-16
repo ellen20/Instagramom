@@ -1,14 +1,22 @@
-.hide-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+ .hide-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
 }
 .edit-post {
     border-bottom: 1px, solid, rgb(31, 27, 27);
 }
 
-.edit-post-description {
-    width: 100vw;
-    height: 40vh;
+.edit-post-desc {
+    width: 60vw;
+    height: 30vh;
+    border: hidden;
+    background-color: #fafafa;
+}
+
+.edit-post-desc:focus {
+    outline: none;
 }
 
 .buttons {

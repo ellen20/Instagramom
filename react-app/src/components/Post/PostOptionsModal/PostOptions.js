@@ -2,15 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { deletePost, editPost } from "../../../store/post";
+import "./PostOptions.css";
 
 const PostOptions = ({ post, setShowModal }) => {
-    const history = useHistory();
     const dispatch = useDispatch();
-    const emoji = useRef(null);
-    const [open, setOpen] = useState(0);
     const user = useSelector((state) => state.session.user);
-    // const [input, setInput] = useState(post.post.description);
-    // const [showModal, setShowModal] = useState(false);
     const [openDel, setOpenDel] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
     const [description, setDescription] = useState("");
@@ -105,7 +101,7 @@ const PostOptions = ({ post, setShowModal }) => {
             )}
 
             {openEdit && (
-                <>
+                <div className="delete-post-modal">
                    <h3>Edit Caption</h3>
                     <div className="close-modal">
                         <img
@@ -135,7 +131,7 @@ const PostOptions = ({ post, setShowModal }) => {
                         </div>
 
                     </div>
-                </>
+                </div>
 
             )}
         </div>

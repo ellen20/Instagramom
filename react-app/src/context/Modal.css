@@ -125,5 +125,10 @@
     align-items: center;
     height: fit-content;
     box-shadow: 10px 10px 20px rgb(37, 37, 37);
-    padding: 20px;
+    padding: 15px;
+}
+
+.delete-post-modal {
+/* display: flex;
+justify-content: center; */
 }
