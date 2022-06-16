@@ -1,15 +1,16 @@
-.post-comment-main {
-    padding: 8px;
+.post-comment-lists {
+    display: flex;
+    gap: 10px;
+    padding: 5px 15px;
 }
 .input-comments {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 8px;
+    align-items: center;
+    padding: 0 15px;
     border-top: 1px solid rgb(224, 222, 222);
-    margin-top: 8px;
-}
+    background-color: #fafafa;
+    height: 50px;
 
-.comment-submit {
-    /* padding-right: 20px; */
 }

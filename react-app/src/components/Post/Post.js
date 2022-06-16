@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./Post.css";
 import { getAllPosts } from "../../store/post";
-import { deletePost } from "../../store/post";
 import Comment from "../Comment/Comment";
 import { comment_icon_black} from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
@@ -15,28 +14,13 @@ const Post = () => {
     const posts = useSelector(state => Object.values(state?.posts))
     const [showOptions, setShowOptions] = useState(false);
 
-    // const sortedPosts = posts.sort((a, b) =>
-    //     b.created_at.localeCompare(a.created_at)
-    // );
+    const sortedPosts = posts.sort((a, b) =>
+        b.created_at.localeCompare(a.created_at)
+    );
 
     useEffect(() => {
         dispatch(getAllPosts())
     }, [dispatch])
-
-    // const postDelete = (e) => {
-    //    let id = e.currentTarget.value;
-    //    dispatch(deletePost(id))
-    // }
-
-    const openPostOptions = () => {
-        setShowOptions(true)
-    }
-
-    const closePostOptions = () => {
-        if (!showOptions) return; // do nothing if modal already closed
-        setShowOptions(false); // else close modal
-
-    };
 
     return (
         <div className="all-posts">
@@ -62,17 +46,14 @@ const Post = () => {
                             <div className="post-description">
                                 {post?.description}
                             </div>
-                        </div>
-
-                        <div className="post-bottom">
-                            <div className="post-bottom-icons"
+                            <div className="post-icons"
                                 onClick = {() => history.push(`/posts/${post.id}`) }>
                                 {comment_icon_black}
                             </div>
+                        </div>
 
-                            <div className="post-comment">
+                        <div className="post-bottom">
                                 <Comment post={post}/>
-                            </div>
                         </div>
                     </div>
                 </div>
