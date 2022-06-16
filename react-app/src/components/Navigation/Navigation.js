@@ -22,7 +22,7 @@ const Navigation = () => {
                 <div className="nav-logo">
                     <h3 onClick={() => history.push("/")}>Instagramom</h3>
                 </div>
-                <div className="search-container" >
+                {/* <div className="search-container" >
                     <input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -30,7 +30,7 @@ const Navigation = () => {
                         placeholder="Search"
                     />
 
-                </div>
+                </div> */}
 
                 <div className="nav-home">
                     {path === '/' ? (

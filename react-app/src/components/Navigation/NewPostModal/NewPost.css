@@ -117,7 +117,7 @@
     padding: 0 16px;
     font-size: 16px;
     resize: none;
-    height: 40vh;
+    height: 30vh;
     width: 15vw;
 }
 
@@ -129,4 +129,26 @@
     width: 20vw;
     display: flex;
     flex-direction: column;
+}
+
+.remove-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    outline: none;
+    border: none;
+    border-top: 0.5px solid #dbdbdb;
+    border-bottom: 0.5px solid #dbdbdb;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #ed4956;
+    font-weight: 500;
+}
+
+.post-error {
+    color: #ed4956;
+    font-size: 14px;
+    padding: 5px;
 }
