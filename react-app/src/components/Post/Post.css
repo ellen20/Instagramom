@@ -1,14 +1,10 @@
 .all-posts {
     padding-top: 5px;
     margin: 0 auto;
-    /* margin-bottom: 20px; */
+    padding-bottom: 20px;
     min-height: calc(100vh - 50px);
     position: relative;
     background-color: #fafafa;
-}
-
-.post-main {
-    height: auto;
 }
 
 .post-card {
