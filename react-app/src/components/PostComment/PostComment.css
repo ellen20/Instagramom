@@ -8,12 +8,19 @@
 .post-comments {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    max-width: 1024px;
+    width: 700px;
+    margin-bottom: 30px;
 }
 
 .comments-left {
     width: 100%;
-    height: auto;
+    height: 510px;
+}
+
+.comment-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .comments-right {
@@ -25,6 +32,8 @@
 }
 
 .comments-user {
+    font-weight: bold;
+    font-size: 16px;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -32,26 +41,28 @@
     border-bottom: 1px solid rgb(224, 222, 222);
 }
 
-.comment-user-info {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.comment-user {
-    display: flex;
-    flex-direction: column;
-}
-
 .comments-user-img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
-.comment-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.comments-section {
+    height: 400px;
+    overflow-x: hidden;
+    padding: 8px;
+}
+
+.comment-lists {
+
+}
+
+.comment-user-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .comment-user-img {
@@ -61,28 +72,33 @@
     padding: 8px;
 }
 
-.comments-section {
-    /* max-height: 300px;
-    min-height: 300px; */
-    height: 200px;
-    overflow-x: hidden;
-}
-
-.comment {
+.comment-info {
     width: 100%;
     display: flex;
     gap: 5px;
     align-items: center;
-    /* overflow-wrap: break-word; */
-}
-.input-comment {
-    width: 200px;
+    padding: 0 8px;
 }
 
-.create-time {
-    font-size: 10px;
+.comment-time {
+    font-size: 12px;
     color: rgb(179, 177, 174);
+    padding-left: 10px;
 }
+
+.edit-comment,
+.delete-comment {
+    color: white;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.comment-lists:hover .delete-comment,
+.comment-lists:hover .edit-comment {
+    visibility: visible;
+    background-color: rgb(202, 197, 197);
+}
+
 .comment-right-bot {
     display: flex;
     flex-direction: row;
@@ -92,6 +108,7 @@
 }
 
 .input-comment {
+    width: 200px;
     border: hidden;
 }
 
@@ -105,18 +122,11 @@ button {
 }
 
 .comment-submit {
-    color: rgba(0, 149, 255, 0.734)
+    color: #0095f6;
 }
 
-.comments-list:hover .delete-comment {
-    visibility: visible;
-    background-color: rgb(202, 197, 197);
-}
+.login-about {
+    position: absolute;
+    bottom: 10px;
 
-.edit-comment {
-    color: white;
-}
-.comments-list:hover .edit-comment {
-    visibility: visible;
-    background-color: rgb(202, 197, 197);
 }

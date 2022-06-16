@@ -13,7 +13,7 @@ const EditCommentModal = ({ comment }) => {
     return (
         <>
             <button className="edit-comment" onClick={() => setShowModal(true)}>
-                Edit
+                <i class="fa-solid fa-user-pen"></i>
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

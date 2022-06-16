@@ -116,7 +116,7 @@ const LoginForm = () => {
         <div className="about-dot">{" • "}</div>
         <a
           className="h-linkedin"
-          href=""
+          href="https://www.linkedin.com/in/jingling-jin-4641961a9/"
           target="_blank"
         >
           Linkedin

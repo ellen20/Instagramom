@@ -36,7 +36,10 @@ const Comment = ({post}) => {
     return (
         <div className="post-comment-main">
             {spec_comments?.map(comment => (
-               <div>{comment.description}</div>
+               <div>
+                   {comment.description}
+                   <span className="comment-time">{comment?.created_at.split(" ").slice(1, 4).join(" ")}</span>
+                </div>
             ))}
             <div className="input-comments">
                 <input
