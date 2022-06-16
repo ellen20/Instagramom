@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deletePost, editPost } from "../../../store/post";
 import "./PostOptions.css";
@@ -9,7 +8,7 @@ const PostOptions = ({ post, setShowModal }) => {
     const user = useSelector((state) => state.session.user);
     const [openDel, setOpenDel] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState(post.description);
     const [errors, setErrors] = useState([]);
 
     const openDelModal = () => {
@@ -25,6 +24,10 @@ const PostOptions = ({ post, setShowModal }) => {
 
         if (description.length > 400) {
             errorr.push("Caption cannot be over 400 characters.");
+        }
+
+        if (description.length < 1) {
+            errorr.push("Please input new caption.");
         }
 
         if (errorr.length > 0) {
@@ -103,6 +106,11 @@ const PostOptions = ({ post, setShowModal }) => {
             {openEdit && (
                 <div className="delete-post-modal">
                    <h3>Edit Caption</h3>
+                   <div className='errors'>
+                            {errors?.map((error, ind) => (
+                                <div className='err-msg' key={ind}>{error}</div>
+                            ))}
+                    </div>
                     <div className="close-modal">
                         <img
                             className="close-modal-img"
@@ -117,7 +125,6 @@ const PostOptions = ({ post, setShowModal }) => {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 className="edit-post-desc"
-                                placeholder={post.description}
                                 maxLength="400" />
                         </div>
 
@@ -129,6 +136,8 @@ const PostOptions = ({ post, setShowModal }) => {
                                 Cancel
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>
