@@ -39,7 +39,9 @@
 }
 
 .login-logo {
-
+    padding-top: 3em;
+    width: 12em;
+    height: 4em;
 }
 
 .login-email, .login-password{
@@ -107,7 +109,7 @@
 .login-about {
     display: flex;
     position: absolute;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 11px;
     gap: 2.5px;
     bottom: 40px;
@@ -119,6 +121,7 @@
 }
 
 .l-copyright {
+    padding: 0.3em;
     position: absolute;
     color: #8e8e8e;
     cursor: pointer;
@@ -126,7 +129,7 @@
     font-size: 11px;
     display: flex;
     margin: 0 auto;
-    bottom: 20px;
+    bottom: 30px;
     width: max-content;
 }
 

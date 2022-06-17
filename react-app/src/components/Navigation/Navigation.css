@@ -24,6 +24,8 @@
 .nav-logo {
     cursor: pointer;
     background-color: #ffffff;
+    width: 8em;
+    height: 2em;
 
 }
 

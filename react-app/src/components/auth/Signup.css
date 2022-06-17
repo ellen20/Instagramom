@@ -4,13 +4,13 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 100vh;
+    min-height: 80vh;
     width: 100%;
 }
 
 .signup-top {
     width: 350px;
-    min-height: 542px;
+    height: 31em;
     background-color: #ffffff;
     border: 0.5px solid #dbdbdb;
     display: flex;
@@ -19,6 +19,7 @@
 }
 
 .signup-form {
+    padding-top: 2.5em;
     display: flex;
     flex-direction: column;
     gap: 5px;

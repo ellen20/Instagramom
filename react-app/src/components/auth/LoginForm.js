@@ -48,11 +48,10 @@ const LoginForm = () => {
       <div className="login-page-right">
 
         <div className="login-top">
-          <p>Instagramom</p>
-          {/* <img
+          <img
             className="login-logo"
-            src=""
-          /> */}
+            src="https://fontmeme.com/permalink/220617/310e477cf85c7466a813f402a3e3fe0c.png" alt="generate-text-with-any-font" border="0"
+          />
         </div>
 
         <form onSubmit={onLogin} className="login-form">
