@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const date = new Date();
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -55,84 +55,112 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-page'>
+      <div className="signup-top">
+          <img
+            className="login-logo"
+            src="https://fontmeme.com/permalink/220617/310e477cf85c7466a813f402a3e3fe0c.png" alt="generate-text-with-any-font" border="0"
+          />
 
-      <form className='signup-form' onSubmit={onSignUp}>
-        <input
-          placeholder="Email*"
-          className="signup-input"
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-          required={true}
-          autoComplete="off"
-        ></input>
-        <input
-          placeholder="Full Name*"
-          className="signup-input"
-          type="text"
-          name="fullname"
-          onChange={updateFullname}
-          value={fullname}
-          autoComplete="off"
-          required={true}
-        ></input>
-        <input
-          placeholder="Username*"
-          className="signup-input"
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          autoComplete="off"
-          value={username}
-          required={true}
-        ></input>
-        <input
-          placeholder="Password*"
-          className="signup-input"
-          type="password"
-          name="password"
-          autoComplete="off"
-          onChange={updatePassword}
-          value={password}
-          required={true}
-        ></input>
-        <input
-          placeholder="Repeat Password*"
-          autoComplete="off"
-          className="signup-input"
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-        <button
-          className="signup-submit"
-          type="submit"
-          disabled={
-            username.length < 1 ||
-            email.length < 1 ||
-            password.length < 1 ||
-            repeatPassword.length < 1 ||
-            fullname.length < 1
-          }>
-          Sign Up
-        </button>
-
+        <form className='signup-form' onSubmit={onSignUp}>
+          <input
+            placeholder="Email*"
+            className="signup-input"
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+            required={true}
+            autoComplete="off"
+          ></input>
+          <input
+            placeholder="Full Name*"
+            className="signup-input"
+            type="text"
+            name="fullname"
+            onChange={updateFullname}
+            value={fullname}
+            autoComplete="off"
+            required={true}
+          ></input>
+          <input
+            placeholder="Username*"
+            className="signup-input"
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            autoComplete="off"
+            value={username}
+            required={true}
+          ></input>
+          <input
+            placeholder="Password*"
+            className="signup-input"
+            type="password"
+            name="password"
+            autoComplete="off"
+            onChange={updatePassword}
+            value={password}
+            required={true}
+          ></input>
+          <input
+            placeholder="Repeat Password*"
+            autoComplete="off"
+            className="signup-input"
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+          <button
+            className="signup-submit"
+            type="submit"
+            disabled={
+              username.length < 1 ||
+              email.length < 1 ||
+              password.length < 1 ||
+              repeatPassword.length < 1 ||
+              fullname.length < 1
+            }>
+            Sign Up
+          </button>
+        </form>
         <div className='login-errors'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-
-      </form>
-
+      </div>
       <div className="signup-bot">
         Have an account?{" "}
         <span onClick={() => history.push("/login")} className="signup-log">
           Log in
         </span>
+      </div>
+      <div className="signup-about">
+        <div className="h-about" onClick={() => history.push("/about")}>
+          About
+        </div>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-linkedin"
+          href="https://www.linkedin.com/in/jingling-jin-4641961a9/"
+          target="_blank"
+        >
+          Linkedin
+        </a>
+        <div className="about-dot">{" • "}</div>
+        <a
+          className="h-github"
+          href="https://github.com/ellen20"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </div>
+
+      <div className="l-copyright" onClick={() => history.push("/about")}>
+        © {date.getFullYear()} Instagramom by Jingling Jin
       </div>
 
     </div>

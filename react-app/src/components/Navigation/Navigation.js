@@ -20,7 +20,11 @@ const Navigation = () => {
         <div className="nav-main">
             <div className="nav-mid">
                 <div className="nav-logo">
-                    <h3 onClick={() => history.push("/")}>Instagramom</h3>
+                    <img
+                    className="nav-logo"
+                    onClick={() => history.push("/")}
+                    src="https://fontmeme.com/permalink/220617/310e477cf85c7466a813f402a3e3fe0c.png" alt="generate-text-with-any-font" border="0"
+                    ></img>
                 </div>
                 {/* <div className="search-container" >
                     <input
