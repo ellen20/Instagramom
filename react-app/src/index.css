@@ -11,3 +11,55 @@
 body {
     background-color: #fafafa;
 }
+
+.login-about {
+    display: flex;
+    position: absolute;
+    margin-top: 10px;
+    font-size: 11px;
+    gap: 2.5px;
+    bottom: 40px;
+    margin: 0 auto;
+    width: max-content;
+}
+
+.login-about>* {
+    color: #8e8e8e !important;
+}
+
+.l-copyright {
+    padding: 0.3em;
+    position: absolute;
+    color: #8e8e8e;
+    cursor: pointer;
+    margin-top: 10px !important;
+    font-size: 11px;
+    display: flex;
+    margin: 0 auto;
+    bottom: 30px;
+    width: max-content;
+}
+
+footer {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    color: #8e8e8e;
+    position: relative;
+    bottom: 1em;
+    margin-top: 1em;
+    font-size: 0.8em;
+}
+ a {
+    text-decoration: none;
+    color: #8e8e8e;;
+ }
+
+ /* textarea {
+    font-size: 14px;
+    width: 50em;
+    border: hidden;
+    background-color: #fafafa;
+    resize: none;
+    outline: none;
+ } */

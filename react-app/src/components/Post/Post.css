@@ -62,3 +62,15 @@
     font-weight: bold;
     overflow-wrap: break-word;
 }
+
+.p-input-comment {
+    border: none;
+    background-color: #fafafa;
+    font-size: 14px;
+    width: 30em;
+    outline: none;
+}
+
+.p-input-comment:focus {
+    outline: none;
+}

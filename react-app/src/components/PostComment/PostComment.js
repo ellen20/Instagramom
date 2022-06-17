@@ -98,13 +98,14 @@ const PostComment = ({posts}) => {
                         )}
                     </div>
                     <div className="comment-right-bot">
-                        <textarea
+                        <input
                             className="input-comment"
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
                             placeholder="Add a comment..."
                             maxLength="400">
-                        </textarea>
+                        </input>
+
                         <div
                             className="comment-submit"
                             onClick={(e) => newComment(e)}>
@@ -113,31 +114,6 @@ const PostComment = ({posts}) => {
                     </div>
                 </div>
             </div>
-            {/* <div className="login-about">
-                <div className="h-about" onClick={() => history.push("/about")}>
-                About
-                </div>
-                <div className="about-dot">{" • "}</div>
-                <a
-                className="h-linkedin"
-                href="https://www.linkedin.com/in/jingling-jin-4641961a9/"
-                target="_blank"
-                >
-                Linkedin
-                </a>
-                <div className="about-dot">{" • "}</div>
-                <a
-                className="h-github"
-                href="https://github.com/ellen20"
-                target="_blank"
-                >
-                GitHub
-                </a>
-            </div>
-
-            <div className="l-copyright" onClick={() => history.push("/about")}>
-                © {date.getFullYear()} Instagranmom by Jingling Jin
-            </div> */}
         </div>
     )
 }

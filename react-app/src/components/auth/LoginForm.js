@@ -107,8 +107,8 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-
-      <div className="login-about">
+      <footer>
+      {/* <div className="login-about">
         <div className="h-about" onClick={() => history.push("/about")}>
           About
         </div>
@@ -132,8 +132,8 @@ const LoginForm = () => {
 
       <div className="l-copyright" onClick={() => history.push("/about")}>
         © {date.getFullYear()} Instagramom by Jingling Jin
-      </div>
-
+      </div> */}
+    </footer>
     </div>
 
   );
