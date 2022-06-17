@@ -61,3 +61,10 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
    ```
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+
+
+## Features
+
+### Splash Page
+Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://my-instagramom.herokuapp.com/login" target="_blank">here</a>! 
+![Splash Page](https://user-images.githubusercontent.com/96894806/171970664-f718ba0b-fb5e-4f4d-98a7-9a958797a375.pn
