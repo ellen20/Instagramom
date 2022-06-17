@@ -58,7 +58,7 @@ const SignUpForm = () => {
 
       <form className='signup-form' onSubmit={onSignUp}>
         <input
-          placeholder="Email"
+          placeholder="Email*"
           className="signup-input"
           type="text"
           name="email"
@@ -68,7 +68,7 @@ const SignUpForm = () => {
           autoComplete="off"
         ></input>
         <input
-          placeholder="Full Name"
+          placeholder="Full Name*"
           className="signup-input"
           type="text"
           name="fullname"
@@ -78,7 +78,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
         <input
-          placeholder="Username"
+          placeholder="Username*"
           className="signup-input"
           type="text"
           name="username"
@@ -88,7 +88,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
         <input
-          placeholder="Password"
+          placeholder="Password*"
           className="signup-input"
           type="password"
           name="password"
@@ -98,7 +98,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
         <input
-          placeholder="Repeat Password"
+          placeholder="Repeat Password*"
           autoComplete="off"
           className="signup-input"
           type="password"
