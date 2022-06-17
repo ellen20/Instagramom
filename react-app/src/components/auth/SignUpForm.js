@@ -137,32 +137,6 @@ const SignUpForm = () => {
           Log in
         </span>
       </div>
-      {/* <div className="signup-about">
-        <div className="h-about" onClick={() => history.push("/about")}>
-          About
-        </div>
-        <div className="about-dot">{" • "}</div>
-        <a
-          className="h-linkedin"
-          href="https://www.linkedin.com/in/jingling-jin-4641961a9/"
-          target="_blank"
-        >
-          Linkedin
-        </a>
-        <div className="about-dot">{" • "}</div>
-        <a
-          className="h-github"
-          href="https://github.com/ellen20"
-          target="_blank"
-        >
-          GitHub
-        </a>
-      </div>
-
-      <div className="l-copyright" onClick={() => history.push("/about")}>
-        © {date.getFullYear()} Instagramom by Jingling Jin
-      </div> */}
-
     </div>
   );
 };

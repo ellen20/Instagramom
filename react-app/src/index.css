@@ -47,19 +47,10 @@ footer {
     color: #8e8e8e;
     position: relative;
     bottom: 1em;
-    margin-top: 1em;
+    margin-top: 1.5em;
     font-size: 0.8em;
 }
  a {
     text-decoration: none;
     color: #8e8e8e;;
  }
-
- /* textarea {
-    font-size: 14px;
-    width: 50em;
-    border: hidden;
-    background-color: #fafafa;
-    resize: none;
-    outline: none;
- } */
