@@ -60,7 +60,7 @@ const LoginForm = () => {
             className='login-email'
             name='email'
             type='text'
-            placeholder='Email'
+            placeholder='Email*'
             value={email}
             onChange={updateEmail}
           />
