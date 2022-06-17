@@ -1,3 +1,9 @@
+<h1 align="center"><img height="22px" width="22px" src="" alt=""><img>  Chatter</h1>
+
+Instagramom is a full-stack web application clone of <a href="https://www.instagram.com/">instagram.com</a>. Instagramom allows moms share their baby's photo and post comments.
+
+<a href="https://my-instagramom.herokuapp.com/login" target="_blank"><strong>Explore the website »</strong></a><br/>
+
 # Flask React Project
 
 This is the starter for the Flask React project.
