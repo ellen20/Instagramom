@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './Login.css'
+import login_img from '../images/login_img.png';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -42,7 +43,7 @@ const LoginForm = () => {
     <div className='login-page'>
 
       <div className='login-page-left'>
-        <img className='login-img' src='https://shop.urbanmamaz.com/wp-content/uploads/2021/07/Instagram-story-srickers-BABY.jpg'></img>
+        <img className='login-img' src={login_img} alt="login-img"/>
       </div>
 
       <div className="login-page-right">
@@ -107,35 +108,7 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-      <footer>
-      {/* <div className="login-about">
-        <div className="h-about" onClick={() => history.push("/about")}>
-          About
-        </div>
-        <div className="about-dot">{" • "}</div>
-        <a
-          className="h-linkedin"
-          href="https://www.linkedin.com/in/jingling-jin-4641961a9/"
-          target="_blank"
-        >
-          Linkedin
-        </a>
-        <div className="about-dot">{" • "}</div>
-        <a
-          className="h-github"
-          href="https://github.com/ellen20"
-          target="_blank"
-        >
-          GitHub
-        </a>
-      </div>
-
-      <div className="l-copyright" onClick={() => history.push("/about")}>
-        © {date.getFullYear()} Instagramom by Jingling Jin
-      </div> */}
-    </footer>
     </div>
-
   );
 };
 
