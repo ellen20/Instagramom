@@ -19,7 +19,7 @@
 
 .login-page-left {
     width: 425px;
-    height: 433px;
+    height: 31.1em;
 }
 
 .login-page-right {
@@ -104,33 +104,6 @@
     text-align: center;
     color: red;
     font-size: 14px;
-}
-
-.login-about {
-    display: flex;
-    position: absolute;
-    margin-top: 10px;
-    font-size: 11px;
-    gap: 2.5px;
-    bottom: 40px;
-    margin: 0 auto;
-    width: max-content;
-}
-.login-about>* {
-    color: #8e8e8e !important;
-}
-
-.l-copyright {
-    padding: 0.3em;
-    position: absolute;
-    color: #8e8e8e;
-    cursor: pointer;
-    margin-top: 10px !important;
-    font-size: 11px;
-    display: flex;
-    margin: 0 auto;
-    bottom: 30px;
-    width: max-content;
 }
 
 .login-or {

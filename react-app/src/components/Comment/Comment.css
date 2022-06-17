@@ -19,5 +19,16 @@
     border-top: 1px solid rgb(224, 222, 222);
     background-color: #fafafa;
     height: 50px;
+}
 
+.input-comment {
+    border: none;
+    background-color: #fafafa;
+    font-size: 14px;
+    width: 21em;
+    outline: none;
+}
+
+.input-comment:focus {
+    outline: none;
 }

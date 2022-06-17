@@ -42,14 +42,14 @@ const Comment = ({post}) => {
                 </div>
             ))}
             <div className="input-comments">
-                <textarea
-                    className="input-comment"
+                <input
+                    className="p-input-comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Add a comment..."
                     maxLength="400"
                 >
-                </textarea>
+                </input>
                 <div
                     className="comment-submit"
                     onClick={(e) => newComment()}
