@@ -6,13 +6,22 @@ def seed_users():
     demo = User(
         username='Demo', fullname='Demo Kim', email='demo@aa.io', password='password', image_url='https://t4.ftcdn.net/jpg/02/59/68/53/240_F_259685304_GU2G9fZ4qWXiWgJbcOrlagnJmTBVQ32X.jpg', description='I am Demo')
     marnie = User(
-        username='marnie', fullname='Marnie Williams', email='marnie@aa.io', password='password', image_url='https://t3.ftcdn.net/jpg/00/74/70/92/240_F_74709230_Oi0LDDGMOL4uZjgnVvhHMHSf9hoszFmD.jpg', description="Hi, I am Noah's Mom")
+        username='Marnie', fullname='Marnie Williams', email='marnie@aa.io', password='password', image_url='https://t3.ftcdn.net/jpg/00/74/70/92/240_F_74709230_Oi0LDDGMOL4uZjgnVvhHMHSf9hoszFmD.jpg', description="Hi, I am Noah's Mom")
     bobbie = User(
-        username='bobbie', fullname='Bobbie Smith',email='bobbie@aa.io', password='password',image_url='https://t4.ftcdn.net/jpg/01/40/82/83/240_F_140828351_P2MjJoNTrPJzDwhlbsXLxPxBE8Dm9mJO.jpg', description="Smith Family")
+        username='Bobbie', fullname='Bobbie Smith',email='bobbie@aa.io', password='password',image_url='https://t4.ftcdn.net/jpg/01/40/82/83/240_F_140828351_P2MjJoNTrPJzDwhlbsXLxPxBE8Dm9mJO.jpg', description="Smith Family")
+    sophia = User(
+        username='sophia', fullname='Sophia Smith', email='sophia@aa.io', password='password', image_url='https://t4.ftcdn.net/jpg/02/59/68/53/240_F_259685304_GU2G9fZ4qWXiWgJbcOrlagnJmTBVQ32X.jpg', description='I am Demo')
+    linda = User(
+        username='linda', fullname='Linda Williams', email='linda@aa.io', password='password', image_url='https://t3.ftcdn.net/jpg/00/74/70/92/240_F_74709230_Oi0LDDGMOL4uZjgnVvhHMHSf9hoszFmD.jpg', description="Hi, I am Noah's Mom")
+    hanna = User(
+        username='hanna', fullname='Hanna Smith',email='hanna@aa.io', password='password',image_url='https://t4.ftcdn.net/jpg/01/40/82/83/240_F_140828351_P2MjJoNTrPJzDwhlbsXLxPxBE8Dm9mJO.jpg', description="Smith Family")
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(sophia)
+    db.session.add(linda)
+    db.session.add(hanna)
 
     db.session.commit()
 
