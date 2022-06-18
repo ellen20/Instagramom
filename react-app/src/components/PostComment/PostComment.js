@@ -74,11 +74,10 @@ const PostComment = ({posts}) => {
                                     <img className="comment-user-img" src={comment.image_url}></img>
                                     {comment.username}
                                 </div>
-
+                                <div className="comment">{comment.description}</div>
                                 <div className="comment-info">
-                                    {comment.description}
                                     <span className="comment-time">
-                                        ({comment?.created_at.split(" ").slice(1, 4).join(" ")})</span>
+                                        {comment?.created_at.split(" ").slice(1, 4).join(" ")}</span>
                                     {current_user_id == comment.user_id && (
                                     <>
                                         <button
