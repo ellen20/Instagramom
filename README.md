@@ -80,3 +80,22 @@ Users can see all comments for a spefic post and edit or delete their comment th
 <img width="1257" alt="Screen Shot 2022-06-17 at 11 46 11 PM" src="https://user-images.githubusercontent.com/66989321/174423187-0b1a2402-b00a-4200-91c6-00bc83e90355.png">
 
 ## Future Features
+
+### Likes Features
+* Users can like or unlike all post
+
+### Follows Features 
+* Users can follow or unfllow other users
+
+### User Profile Page
+* Users can view specific user's profile information 
+* User can change user's image
+* Users can view all posts made by the users
+* Follow or unfollow user
+
+### Search Bar
+* Users can live search in navigation bar
+* Users can search other users information
+
+### Live Chat
+* Users can live messaging with followers or followees
