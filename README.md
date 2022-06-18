@@ -77,5 +77,6 @@ Users can view all posts in this home page and post comment for each post. Users
 
 ### Comment Page
 Users can see all comments for a spefic post and edit or delete their comment that they left.
+<img width="1257" alt="Screen Shot 2022-06-17 at 11 46 11 PM" src="https://user-images.githubusercontent.com/66989321/174423187-0b1a2402-b00a-4200-91c6-00bc83e90355.png">
 
 ## Future Features
