@@ -1,6 +1,6 @@
 <h1 align="center"><img height="22px" width="22px" src="https://camo.githubusercontent.com/c9dacf0f25a1489fdbc6c0d2b41cda58b77fa210a13a886d6f99e027adfbd358/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f696e7374616772616d2e737667" alt=""></img>  Instagramom</h1>
 
-Instagramom is a full-stack web application clone of <a href="https://www.instagram.com/">instagram.com</a>. Instagramom allows all moms share their baby's photos and post their comments.
+Instagramom is a full-stack web application clone of <a href="https://www.instagram.com/">instagram.com</a>. Instagramom allows all moms share their moments by posting their kid's photos and comments.
 
 <a href="https://my-instagramom.herokuapp.com/login" target="_blank"><strong>Explore the website »</strong></a><br/>
 
@@ -63,3 +63,14 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
+## Features
+[Back to top](#table-of-contents)
+
+<a href="https://github.com/ellen20/Instagramom/wiki">See wiki page for feature list</a>
+
+### Splash Page
+Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="[https://chatter-with-us.herokuapp.com/](https://my-instagramom.herokuapp.com/login)" target="_blank">here</a>! 
+![Splash Page](https://user-images.githubusercontent.com/96894806/171970664-f718ba0b-fb5e-4f4d-98a7-9a958797a375.png)
+
+### Home Page
+Home page
