@@ -9,7 +9,6 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
   <ol>
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#database-schema">Database Schema</a></li>
     <li><a href="#future-features">Future Features</a></li>
   </ol>
  </details>
@@ -70,9 +69,13 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
 
 ### Splash Page
 Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="[https://chatter-with-us.herokuapp.com/](https://my-instagramom.herokuapp.com/login)" target="_blank">here</a>! 
-![Splash Page](https://user-images.githubusercontent.com/96894806/171970664-f718ba0b-fb5e-4f4d-98a7-9a958797a375.png)
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 27 36 PM" src="https://user-images.githubusercontent.com/66989321/174418838-2c63ace4-12fe-444f-9ff9-e5626a34e7e0.png">
 
-
 ### Home Page
-Home page
+Users can view all posts in this home page and post comment for each post. Users also can edit and delete post that they made.
+<img width="1257" alt="Screen Shot 2022-06-17 at 8 26 01 PM" src="https://user-images.githubusercontent.com/66989321/174418876-9855e882-0ae3-4bcf-a52f-ef847b4d2025.png">
+
+### Comment Page
+Users can see all comments for a spefic post and edit or delete their comment that they left.
+
+## Future Features
