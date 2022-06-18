@@ -20,7 +20,7 @@
 
 .login-page-left {
     width: 500px;
-    height: 31.1em;
+    height: 30em;
 }
 
 .login-page-right {
@@ -99,9 +99,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     gap: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
     color: red;
     font-size: 11px;

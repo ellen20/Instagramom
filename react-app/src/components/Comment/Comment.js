@@ -37,8 +37,12 @@ const Comment = ({post}) => {
         <div className="post-comment-main">
             {spec_comments?.map(comment => (
                <div className="post-comment-lists">
-                   {comment.description}
-                   <span className="comment-time">{comment?.created_at.split(" ").slice(1, 4).join(" ")}</span>
+                   {comment.username}
+                   {comment.description.length > 30 ? (
+                   <div>{comment.description.slice(0,30)}...</div>
+                   ):(
+                    <div className="p-comment-desc">{comment.description}</div>
+                   )}
                 </div>
             ))}
             <div className="input-comments">
