@@ -68,7 +68,7 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
 <a href="https://github.com/ellen20/Instagramom/wiki">See wiki page for feature list</a>
 
 ### Splash Page
-Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://my-instagramom.herokuapp.com/login)" target="_blank">here</a>! 
+Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://my-instagramom.herokuapp.com/login" target="_blank">here</a>! 
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 27 36 PM" src="https://user-images.githubusercontent.com/66989321/174418838-2c63ace4-12fe-444f-9ff9-e5626a34e7e0.png">
 
 ### Home Page
