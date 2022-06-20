@@ -69,14 +69,17 @@ Instagramom is a full-stack web application clone of <a href="https://www.instag
 
 ### Splash Page
 Landing page for when users first arrive at Instagramom. Users can sign in, sign up, or explore the site through a demo user without signing up. Check out the live site <a href="https://my-instagramom.herokuapp.com/login" target="_blank">here</a>! 
+
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 27 36 PM" src="https://user-images.githubusercontent.com/66989321/174418838-2c63ace4-12fe-444f-9ff9-e5626a34e7e0.png">
 
 ### Home Page
 Users can view all posts in this home page and leave comments for each post. Users also can edit and delete the post that they made.
+
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 26 01 PM" src="https://user-images.githubusercontent.com/66989321/174418876-9855e882-0ae3-4bcf-a52f-ef847b4d2025.png">
 
 ### Comment Page
 Users can see all comments for a spefic post and edit or delete their comment that they left.
+
 <img width="1257" alt="Screen Shot 2022-06-17 at 11 46 11 PM" src="https://user-images.githubusercontent.com/66989321/174423187-0b1a2402-b00a-4200-91c6-00bc83e90355.png">
 
 ## Future Features
@@ -90,7 +93,7 @@ Users can see all comments for a spefic post and edit or delete their comment th
 ### User Profile Page
 * Users can view specific user's profile information 
 * User can change user's image
-* Users can view all posts made by the users
+* Users can view all posts that they made
 * Follow or unfollow user
 
 ### Search Bar
