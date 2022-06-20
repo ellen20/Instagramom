@@ -72,7 +72,7 @@ Landing page for when users first arrive at Instagramom. Users can sign in, sign
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 27 36 PM" src="https://user-images.githubusercontent.com/66989321/174418838-2c63ace4-12fe-444f-9ff9-e5626a34e7e0.png">
 
 ### Home Page
-Users can view all posts in this home page and post comment for each post. Users also can edit and delete post that they made.
+Users can view all posts in this home page and leave comments for each post. Users also can edit and delete the post that they made.
 <img width="1257" alt="Screen Shot 2022-06-17 at 8 26 01 PM" src="https://user-images.githubusercontent.com/66989321/174418876-9855e882-0ae3-4bcf-a52f-ef847b4d2025.png">
 
 ### Comment Page
