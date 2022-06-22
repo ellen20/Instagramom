@@ -7,10 +7,10 @@ const PageNotFound = () => {
     return (
         <div className='error-page'>
             <div className='error-box'>
-                <h1 className='error-box-header'> <i className="fa fa-exclamation-triangle" aria-hidden="true"></i>There's been a glitch...</h1>
-                <p className='error-box-text'>We’re not quite sure what went wrong. You can go back, or try looking on our Help Center if you need a hand.</p>
+                <h2 className='error-box-header'>Sorry, this page isn't available.</h2>
+                <p className='error-box-text'>The link you followed may be broken, or the page may have been removed.</p>
                 <NavLink className='error-nav' to='/'>
-                    <button className='error-button'>Go Home</button>
+                    <button className='error-button'>Go back to Instagram.</button>
                 </NavLink>
             </div>
             <div>
