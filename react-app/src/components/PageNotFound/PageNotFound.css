@@ -1,3 +1,17 @@
+.error-page {
+
+}
+
+.error-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+}
+
+.error-button {
+    cursor: pointer;
+}
 /* .error-page {
     width: 100%;
     background-image: url('../../images/error.jpg');
