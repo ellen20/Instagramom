@@ -6,6 +6,7 @@ import { getAllPosts } from "../../store/post";
 import Comment from "../Comment/Comment";
 import { comment_icon_black} from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
+import ReactPlayer from 'react-player';
 
 const Post = () => {
     const history = useHistory();
@@ -24,6 +25,8 @@ const Post = () => {
 
     return (
         <div className="all-posts">
+            {/* <ReactPlayer controls={true} url='https://instagramombucket.s3.amazonaws.com/0e50fb21f6b347ad90a88e0d2e140218.mp4
+          	' /> */}
             {posts?.map(post => (
                 // <div className="post-main">
                     <div className="post-card">
@@ -40,9 +43,20 @@ const Post = () => {
                         </div>
 
                         <div className="post-mid">
-                            <div>
+                            {post?.media_url.slice(-3) == "mp4" || post?.media_url.slice(-3) == "mov" ? (
+                            <div className="post-video">
+                                <ReactPlayer
+                                    controls={true}
+                                    url={post?.media_url}
+                                    width='100%'
+                                    height='100%'
+                                />
+                            </div>
+                            ):(
+                            <div className="post-img">
                                 <img className="post-img" src={post?.media_url}></img>
                             </div>
+                            )}
                             <div className="post-description">
                                 {post?.description}
                             </div>

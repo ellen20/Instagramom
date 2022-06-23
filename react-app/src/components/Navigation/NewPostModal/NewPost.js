@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { uploadPost } from "../../../store/post";
 import { newIcon } from "./newIcons";
 import "./NewPost.css";
+import ReactPlayer from "react-player";
 
 const NewPost = ({setShowModal}) => {
     const dispatch = useDispatch();
@@ -33,22 +34,22 @@ const NewPost = ({setShowModal}) => {
             errorr.push("Please write a caption.");
         }
 
-        if (image === false) {
-            errorr.push("Please provide an image file.");
-        }
-        else {
-            const allowedImg = [".pdf", ".png", ".jpg", "jpeg", ".gif"]
+        // if (image === false) {
+        //     errorr.push("Please provide an image file.");
+        // }
+        // else {
+            const allowedImg = [".pdf", ".png", ".jpg", "jpeg", ".gif",".mp3", ".wav", ".flac",".mp4", ".mov"]
             const loadedImg = imgUrl.name.slice(-4).toLowerCase();
 
             if(!allowedImg.includes(loadedImg)){
-                errorr.push("Please provide an valid image file. (Allowed image type: pdf, png, jpg, jpeg, gif)");
+                errorr.push("Please provide an valid file. (Allowed image type: pdf, png, jpg, jpeg, gif. Allowed video type: mp4, mov)");
             }
-        }
+        // }
 
         if (errorr.length > 0) {
             return setErrors(errorr);
         }
-
+console.log("??????????", url, imgUrl)
         const post = {
             file: imgUrl,
             description: description,
@@ -89,7 +90,7 @@ const NewPost = ({setShowModal}) => {
                                         id="new-pic"
                                         type="file"
                                         className="hidden"
-                                        accept="image/*"
+                                        // accept="video/*"
                                         onChange={(e) => {
                                             setUrl(URL.createObjectURL(e.target.files[0]));
                                             setImgUrl(e.target.files[0]);
@@ -98,12 +99,23 @@ const NewPost = ({setShowModal}) => {
                                 </label>
                             </div>
                         ):(
-                            <img
+                            <>
+                            {imgUrl.name.slice(-4) === ".mp4" ? (
+                                <ReactPlayer
                                 className="preview-img"
-                                src={url}
+                                url={url}
                                 onError={() => setImage(false)}
                                 onLoad={() => setImage(true)}
-                            />
+                                />
+                            ):(
+                                <img
+                                    className="preview-img"
+                                    src={url}
+                                    onError={() => setImage(false)}
+                                    onLoad={() => setImage(true)}
+                                />
+                            )}
+                            </>
                         )}
                     </div>
 
@@ -118,17 +130,30 @@ const NewPost = ({setShowModal}) => {
                                 onChange={(e) => setDescription(e.target.value)}
                                 className="new-post-desc"
                                 placeholder="Write a caption..."
-                                maxLength="300" />
+                                maxLength="400" />
                         </div>
                         {url.length > 0 ? (
-                            <div
-                                className="remove-image"
-                                onClick={() => {
-                                    setUrl("");
-                                    setImgUrl("");
-                                }}>
-                                Remove Image
-                            </div>
+                            <>
+                                {imgUrl.name.slice(-4) === ".mp4" ? (
+                                    <div
+                                    className="remove-image"
+                                    onClick={() => {
+                                        setUrl("");
+                                        setImgUrl("");
+                                    }}>
+                                    Remove Video
+                                </div>
+                                ):(
+                                <div
+                                    className="remove-image"
+                                    onClick={() => {
+                                        setUrl("");
+                                        setImgUrl("");
+                                    }}>
+                                    Remove Image
+                                </div>
+                                )}
+                            </>
                         ) : null}
                         <div className="post-error">
                             {errors &&
