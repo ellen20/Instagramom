@@ -48,13 +48,13 @@
 }
 
 .post-bottom-left {
-    width: 37.5vw;
+    width: 35vw;
     border-right: 0.5px solid #dbdbdb;
     height: calc(80vh - 42px);
 }
 
 .new-post-preview {
-    padding-top: 20px;
+    padding-top: 8.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,6 +85,8 @@
 }
 
 .preview-img {
+    /* display: flex;
+    align-items: center; */
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
@@ -118,7 +120,7 @@
     font-size: 16px;
     resize: none;
     height: 30vh;
-    width: 15vw;
+    width: 17vw;
 }
 
 .new-post-desc:focus {

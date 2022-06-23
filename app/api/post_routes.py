@@ -10,13 +10,13 @@ post_routes = Blueprint('posts', __name__)
 @post_routes.route("/all")
 def get_post_all():
     posts = Post.query.order_by(Post.id.desc()).all()
-    print("=================",posts)
+    # print("=================",posts)
     return {"posts": [ post.to_dict() for post in posts ]}
 
 @post_routes.route("/<int:post_id>")
 def get_one_post(post_id):
     post = Post.query.get(post_id)
-    print("==========",post)
+    # print("==========",post)
     # if post:
     return {"post": post }
     # else:
