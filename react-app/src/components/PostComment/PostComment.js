@@ -5,6 +5,7 @@ import "./PostComment.css";
 import { postComment, deleteComment, getComments } from "../../store/comment";
 import { useParams } from 'react-router-dom';
 import EditCommentModal from "./EditCommentModal/EditCommentModal";
+import ReactPlayer from "react-player";
 
 const PostComment = ({posts}) => {
     const history = useHistory();
@@ -15,6 +16,7 @@ const PostComment = ({posts}) => {
     const params = useParams()
     const post_id = params.postId
     const spec_post = postsArr.find(post => post.id == post_id);
+    const imgUrl = spec_post?.media_url
     const spec_comments = comments?.filter(comment => comment.post_id == post_id)
     const [comment, setComment] = useState("");
     const date = new Date();
@@ -58,7 +60,17 @@ const PostComment = ({posts}) => {
         <div className="post-main">
             <div className="post-comments">
                 <div className="comments-left">
-                    <img className="comment-img" src={spec_post?.media_url}></img>
+                    {imgUrl.slice(-4) === ".mp4" ? (
+                        <ReactPlayer
+                        className="comment-img"
+                        width='100%'
+                        height='100%'
+                        url={spec_post?.media_url} />
+                    ):(
+                        <img
+                        className="comment-img"
+                        src={spec_post?.media_url} />
+                    )}
                 </div>
 
                 <div className="comments-right">
