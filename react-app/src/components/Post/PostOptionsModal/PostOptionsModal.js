@@ -14,7 +14,7 @@ const PostOptionsModal = ({ post }) => {
     return (
         <>
             <img
-                className="post-options2"
+                className="post-options"
                 onClick={() => setShowModal(true)}
                 src="https://img.icons8.com/material-two-tone/24/000000/more.png"
             />

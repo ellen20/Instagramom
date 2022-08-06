@@ -39,3 +39,6 @@ h3 {
     padding-top: 1em;
     margin: auto;
 }
+.post-options {
+    cursor: pointer;
+}

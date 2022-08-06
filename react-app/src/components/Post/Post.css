@@ -74,3 +74,13 @@
 .p-input-comment:focus {
     outline: none;
 }
+
+.post-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-icons {
+    cursor: pointer;
+}
