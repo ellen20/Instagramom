@@ -1,6 +1,6 @@
-export const like_icon = (
+export const unlike_icon = (
     <svg
-        aria-label="Like"
+        aria-label="Unlike"
         class="_8-yf5 "
         color="#262626"
         fill="#262626"
@@ -13,9 +13,9 @@ export const like_icon = (
     </svg>
 );
 
-export const unlike_icon = (
+export const like_icon = (
     <svg
-        aria-label="Unlike"
+        aria-label="Like"
         class="_8-yf5 "
         color="#ed4956"
         fill="#ed4956"

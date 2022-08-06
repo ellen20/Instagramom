@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "./Post.css";
 import { getAllPosts } from "../../store/post";
 import Comment from "../Comment/Comment";
-import { comment_icon_black} from "./PostIcons";
+import { comment_icon_black, like_icon, unlike_icon} from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
 import ReactPlayer from 'react-player';
 
@@ -13,7 +13,7 @@ const Post = () => {
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session?.user?.id)
     const posts = useSelector(state => Object.values(state?.posts)).reverse()
-    const [showOptions, setShowOptions] = useState(false);
+    const [showLike, setShowLike] = useState(false);
 
     // const sortedPosts = posts.sort((a, b) =>
     //     b.created_at.localeCompare(a.created_at)
@@ -23,13 +23,22 @@ const Post = () => {
         dispatch(getAllPosts())
     }, [dispatch])
 
+    const postLike = (e) => {
+        let postId = e.currentTarget.value
+        console.log("!!!!", postId)
+        dispatch(postLike(postId));
+        setShowLike(true)
+    }
+
+    const postUnlike = (e) => {
+        let postId = e.currentTarget.value
+        setShowLike(false)
+    }
+
     return (
         <div className="all-posts">
-            {/* <ReactPlayer controls={true} url='https://instagramombucket.s3.amazonaws.com/0e50fb21f6b347ad90a88e0d2e140218.mp4
-          	' /> */}
             {posts?.map(post => (
-                // <div className="post-main">
-                    <div className="post-card">
+                <div className="post-card">
                         <div className="post-top">
                             <div className="post-user">
                                 <img className="post-user-img" src={post.image_url}></img>
@@ -60,19 +69,30 @@ const Post = () => {
                             <div className="post-description">
                                 {post?.description}
                             </div>
-                            <div className="post-icons"
-                                onClick = {() => history.push(`/posts/${post.id}`) }>
-                                {comment_icon_black}
+                            <div className="post-icons">
+                                <div className="like-icon">
+                                    {showLike ? (
+                                        <button className="post-like" value={post.id} onClick={(e) => {postUnlike(e)}}>
+                                        {like_icon}
+                                        </button>
+                                    ):(
+                                        <button className="post-unlike" value={post.id} onClick={(e) => {postLike(e)}}>
+                                        {unlike_icon}
+                                        </button>
+                                    )}
+                                </div>
+                                <div className="comment-icon"
+                                    onClick = {() => history.push(`/posts/${post.id}`) }>
+                                    {comment_icon_black}
+                                </div>
                             </div>
                         </div>
 
                         <div className="post-bottom">
                                 <Comment post={post}/>
                         </div>
-                    </div>
-
+                </div>
             ))}
-
         </div>
     )
 }

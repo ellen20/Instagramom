@@ -49,7 +49,7 @@ const NewPost = ({setShowModal}) => {
         if (errorr.length > 0) {
             return setErrors(errorr);
         }
-console.log("??????????", url, imgUrl)
+// console.log("??????????", url, imgUrl)
         const post = {
             file: imgUrl,
             description: description,
@@ -104,6 +104,8 @@ console.log("??????????", url, imgUrl)
                                 <ReactPlayer
                                 className="preview-img"
                                 url={url}
+                                width='100%'
+                                height='100%'
                                 onError={() => setImage(false)}
                                 onLoad={() => setImage(true)}
                                 />
