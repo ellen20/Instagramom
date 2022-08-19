@@ -4,30 +4,25 @@ import { icon_profile } from "./UerIcons";
 import { logout } from "../../../store/session";
 import './UserSettings.css';
 
-const UserSettings = () => {
+const UserSettings = ({setShowModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
 
+
     return (
         <div className="nav-modal-main">
-            {/* <div
+            <div
                 className="profile-info"
                 onClick={() => {
                     history.push(`/users/${user?.id}`);
+                    setShowModal(false)
                 }}
             >
                 {icon_profile}
                 <div className="info-title">Profile</div>
-            </div> */}
-            <div className="profile-info">
-                {user.username}
-
             </div>
-            <div className="profile-info">
 
-                {user.email}
-            </div>
             <div
                 className="profile-info2"
                 onClick={() => {

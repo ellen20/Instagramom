@@ -4,10 +4,11 @@
     align-items: center;
     font-size: 14px;
     gap: 10px;
+    cursor: pointer;
 }
 
 /* .profile-info:hover, */
-.profile-info2:hover {
+.profile-info2:hover, .profile-info:hover {
     background-color: #fafafa;
 }
 
