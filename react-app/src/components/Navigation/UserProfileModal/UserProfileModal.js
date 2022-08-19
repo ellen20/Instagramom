@@ -5,8 +5,12 @@ import UserSettings from "./UserSettings";
 
 
 
-const UserProfileModal = ({ user}) => {
+const UserProfileModal = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
+    const closeModal = () => {
+        if (!showModal) return; // do nothing if modal already closed
+        setShowModal(false); // else close modal
+    }
 
     return (
         <>
@@ -20,7 +24,7 @@ const UserProfileModal = ({ user}) => {
             </div>
             {showModal && (
                 <NavModal onClose={() => setShowModal(false)}>
-                    <UserSettings />
+                    <UserSettings setShowModal={closeModal} />
                 </NavModal>
             )}
         </>

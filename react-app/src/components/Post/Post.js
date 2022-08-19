@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./Post.css";
 import { getAllPosts } from "../../store/post";
+import { addLike, removeLike } from "../../store/like";
 import Comment from "../Comment/Comment";
 import { comment_icon_black, like_icon, unlike_icon} from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
@@ -12,27 +13,37 @@ const Post = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session?.user?.id)
+    const likes = useSelector(state => Object.values(state?.likes))
     const posts = useSelector(state => Object.values(state?.posts)).reverse()
     const [showLike, setShowLike] = useState(false);
 
     // const sortedPosts = posts.sort((a, b) =>
     //     b.created_at.localeCompare(a.created_at)
     // );
-
+console.log("========", likes, user_id)
     useEffect(() => {
         dispatch(getAllPosts())
     }, [dispatch])
 
+    useEffect(() => {
+        if(likes?.includes(user_id)){
+            setShowLike(true)
+        }
+    }, [])
+
     const postLike = (e) => {
         let postId = e.currentTarget.value
         console.log("!!!!", postId)
-        dispatch(postLike(postId));
+        dispatch(addLike(postId));
         setShowLike(true)
     }
 
     const postUnlike = (e) => {
         let postId = e.currentTarget.value
-        setShowLike(false)
+        if(likes?.post_id == postId && likes?.user_id == user_id){
+            dispatch((removeLike(likes.id)));
+            setShowLike(false)
+        }
     }
 
     return (
@@ -71,12 +82,13 @@ const Post = () => {
                             </div>
                             <div className="post-icons">
                                 <div className="like-icon">
+
                                     {showLike ? (
-                                        <button className="post-like" value={post.id} onClick={(e) => {postUnlike(e)}}>
+                                        <button className="post-like" value={post?.id} onClick={(e) => {postUnlike(e)}}>
                                         {like_icon}
                                         </button>
                                     ):(
-                                        <button className="post-unlike" value={post.id} onClick={(e) => {postLike(e)}}>
+                                        <button className="post-unlike" value={post?.id} onClick={(e) => {postLike(e)}}>
                                         {unlike_icon}
                                         </button>
                                     )}
