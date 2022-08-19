@@ -42,6 +42,10 @@
     color: #555;
 }
 
+.prof-fullname, .prof-desc {
+    color: #555;
+}
+
 .prof-bot {
     margin: 0 auto;
     display: grid;
