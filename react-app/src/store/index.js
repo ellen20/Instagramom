@@ -4,9 +4,10 @@ import session from './session';
 import posts from './post';
 import comments from './comment';
 import likes from './like';
+import search from './search';
 
 const rootReducer = combineReducers({
-  session, posts, comments, likes
+  session, posts, comments, likes, search
 });
 
 let enhancer;
