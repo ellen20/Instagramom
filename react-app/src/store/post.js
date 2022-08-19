@@ -30,7 +30,7 @@ const editedPost = (post) => ({
 export const getAllPosts = () => async (dispatch) => {
     const res = await fetch("/api/posts/all")
     const data = await res.json()
-    console.log("??????", data.posts)
+    // console.log("??????", data.posts)
     if (res.ok) {
         dispatch(getAll(data.posts))
     } else {
