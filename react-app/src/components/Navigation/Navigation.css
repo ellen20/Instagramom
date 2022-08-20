@@ -48,7 +48,7 @@
 }
 
 .search-bar {
-    width: 268px;
+    width: 16.7rem;
     height: 36px;
     padding: 0 12px;
     background-color: #fafafa;
@@ -65,11 +65,11 @@
 .search-results {
     position: absolute;
     background-color: rgb(255, 255, 255);
-    width: 400px;
-    height: 400px;
+    width: 18.2rem;
+    height: 15rem;
     overflow-y: auto;
     margin-top: 14px;
-    margin-left: -53px;
+    /* margin-left: -.1rem; */
     border-radius: 4px;
     font-size: 14px;
     padding: 12px 0px;
@@ -117,7 +117,7 @@
 }
 
 .search-none {
-    margin-top: 187.5px;
+    margin-top: 6.6rem;
     align-self: center;
     text-align: center;
     color: #8e8e8e;
