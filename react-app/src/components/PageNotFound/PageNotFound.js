@@ -1,7 +1,8 @@
-import React from 'react'
-import './PageNotFound.css'
+import React from 'react';
+import './PageNotFound.css';
 import error from '../images/error.jpg';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import page from './page.jpg';
 
 const PageNotFound = () => {
     return (
@@ -12,8 +13,9 @@ const PageNotFound = () => {
                 <NavLink className='error-nav' to='/'>
                     <button className='error-button'>Go back to Instagram.</button>
                 </NavLink>
-            </div>
-            <div>
+                <div className='page-not-found'>
+                    <img className='page-not-found-img' src={page} />
+                </div>
             </div>
         </div>
     )
