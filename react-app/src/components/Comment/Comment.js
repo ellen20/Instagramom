@@ -35,8 +35,8 @@ const Comment = ({post}) => {
 
     return (
         <div className="post-comment-main">
-            {spec_comments?.map(comment => (
-               <div className="post-comment-lists">
+            {spec_comments?.map((comment, idx) => (
+               <div className="post-comment-lists" key={idx}>
                    {comment.username}
                    {comment.description.length > 30 ? (
                    <div>{comment.description.slice(0,30)}...</div>
