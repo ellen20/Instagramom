@@ -91,11 +91,12 @@ Users can live search in navigation bar by type in user's name and will diredted
 ### User Profile Page
 Users can view specific user's profile information and can view all posts that they made.
 
+
 ## Future Features
-* User can change user's image
-* Follow or unfollow user
 
 ### User Profile Page
+* User can change user's image
+* Follow or unfollow user
 
 ### Follows Features 
 * Users can follow or unfllow other users
