@@ -1,0 +1,10 @@
+.like-icon {
+    display: flex;
+    flex-direction: row;
+    margin-right: .3rem;
+    align-items: center;
+}
+
+.heart-num {
+    font-size: .7rem;
+}

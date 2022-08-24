@@ -90,26 +90,6 @@ const Post = () => {
                             <div className="post-icons">
                                 <div className="like-icon">
                                     <PostLikes post={post} userId={user_id} />
-                                    {/* {likes?.find((p) => p.post_id == post?.id) &&
-                                     likes?.find((p) => p.user_id == user_id) || showLike ? (
-                                        <button className="post-like" value={post?.id} onClick={(e) => {postUnlike(e)}}>
-                                            {like_icon}
-                                        </button>
-                                    ) : (
-                                        <button className="post-unlike" value={post?.id} onClick={(e) => {postLike(e)}}>
-                                            {unlike_icon}
-                                        </button>
-                                    )} */}
-
-                                    {/* {showLike ? (
-                                        <button className="post-like" value={post?.id} onClick={(e) => {postUnlike(e)}}>
-                                        {like_icon}
-                                        </button>
-                                    ):(
-                                        <button className="post-unlike" value={post?.id} onClick={(e) => {postLike(e)}}>
-                                        {unlike_icon}
-                                        </button>
-                                    )} */}
                                 </div>
                                 <div className="comment-icon"
                                     onClick = {() => history.push(`/posts/${post.id}`) }>
