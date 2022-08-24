@@ -39,7 +39,7 @@ def delete_like(postId):
     like_remove = Like.query.filter_by(user_id=current_user.id, post_id=postId).first()
     db.session.delete(like_remove)
     db.session.commit()
-    return {'id': like_remove.id}
+    return like_remove.to_dict()
     # post = Post.query.get(post_id)
     # user = User.query.get(current_user.id)
 

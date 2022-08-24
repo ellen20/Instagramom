@@ -2,11 +2,13 @@ import { like_icon, unlike_icon} from "./PostIcons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector  } from "react-redux";
 import { addLike, getAllLikes, removeLike } from "../../store/like";
+import './PostLikes.css';
 
 function PostLikes({ post, userId }) {
     const dispatch = useDispatch();
     const [heartState, setHeartState] = useState(unlike_icon);
     const likes = useSelector(state => Object.values(state?.likes))
+    let num = likes?.filter(e => e.post_id == post.id).length;
 
     useEffect(() => {
         dispatch(getAllLikes());
@@ -34,7 +36,7 @@ function PostLikes({ post, userId }) {
     };
 
     return (
-        <div className="likes-post-feed">
+        <div className="like-icon">
             <div
                 className="heart-icon"
                 style={{ width: "30px", cursor: "pointer" }}
@@ -42,6 +44,21 @@ function PostLikes({ post, userId }) {
             >
                 {heartState}
             </div>
+            <div className="heart-num">
+                {num > 0 && (
+                    <div>
+                        {num == 1 ? (
+                            "1 like"
+                        ) : (
+                        <div>
+                            {num} likes
+                        </div>
+                        )}
+                </div>
+            )}
+            </div>
+
+
         </div>
     );
 }

@@ -41,9 +41,9 @@ export const removeLike = (post_id) => async (dispatch) => {
     });
 
     const data = await res.json();
-    console.log("rrrrrrr", res, data)
+    console.log("rrrrrrr", data)
     if (res.ok) {
-        dispatch(deleteLike(data))
+        dispatch(deleteLike(data.id))
     } else {
         return data
     }
