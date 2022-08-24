@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import "./Post.css";
 import { getAllPosts } from "../../store/post";
-import { addLike, removeLike } from "../../store/like";
+// import { getAllLikes } from "../../store/like";
+// import { addLike, removeLike } from "../../store/like";
 import Comment from "../Comment/Comment";
 import { comment_icon_black, like_icon, unlike_icon} from "./PostIcons";
 import PostOptionsModal from "./PostOptionsModal/PostOptionsModal";
 import ReactPlayer from 'react-player';
+import PostLikes from "./PostLikes";
 
 const Post = () => {
     const history = useHistory();
@@ -15,39 +17,44 @@ const Post = () => {
     const user_id = useSelector(state => state.session?.user?.id)
     const likes = useSelector(state => Object.values(state?.likes))
     const posts = useSelector(state => Object.values(state?.posts)).reverse()
-    const [showLike, setShowLike] = useState(false);
-
+    // const [showLike, setShowLike] = useState(false);
+    // const [heartState, setHeartState] = useState(unlike_icon);
     // const sortedPosts = posts.sort((a, b) =>
     //     b.created_at.localeCompare(a.created_at)
     // );
-console.log("========", likes, user_id)
+// console.log("========", likes, user_id)
     useEffect(() => {
         dispatch(getAllPosts())
+        // dispatch(getAllLikes())
     }, [dispatch])
 
-    useEffect(() => {
-        if(likes?.includes(user_id)){
-            setShowLike(true)
-        }
-    }, [])
+    // const postLike = async (e) => {
+    //     let postId = e.currentTarget.value
+    //     setShowLike(true);
+    //     await dispatch(addLike(postId));
+    //     // await dispatch(getAllPosts());
+    // }
 
-    const postLike = (e) => {
-        let postId = e.currentTarget.value
-        console.log("!!!!", postId)
-        dispatch(addLike(postId));
-        setShowLike(true)
-    }
+    // const postUnlike = async (e) => {
+    //     let postId = e.currentTarget.value
+    //     setShowLike(false)
+    //     await dispatch(removeLike(postId))
+    //     // await dispatch(getAllPosts());
+    // }
 
-    const postUnlike = (e) => {
-        let postId = e.currentTarget.value
-        if(likes?.post_id == postId && likes?.user_id == user_id){
-            dispatch((removeLike(likes.id)));
-            setShowLike(false)
-        }
-    }
+    // const likeOrRemoveLike = (e, postId) => {
+    // if (heartState === unlike_icon) {
+    //   return postLike(e);
+    // } else if (heartState === like_icon) {
+    //   return postUnlike(e);
+    // }
+    // };
+
+
 
     return (
         <div className="all-posts">
+
             {posts?.map(post => (
                 <div className="post-card">
                         <div className="post-top">
@@ -82,8 +89,19 @@ console.log("========", likes, user_id)
                             </div>
                             <div className="post-icons">
                                 <div className="like-icon">
+                                    <PostLikes post={post} userId={user_id} />
+                                    {/* {likes?.find((p) => p.post_id == post?.id) &&
+                                     likes?.find((p) => p.user_id == user_id) || showLike ? (
+                                        <button className="post-like" value={post?.id} onClick={(e) => {postUnlike(e)}}>
+                                            {like_icon}
+                                        </button>
+                                    ) : (
+                                        <button className="post-unlike" value={post?.id} onClick={(e) => {postLike(e)}}>
+                                            {unlike_icon}
+                                        </button>
+                                    )} */}
 
-                                    {showLike ? (
+                                    {/* {showLike ? (
                                         <button className="post-like" value={post?.id} onClick={(e) => {postUnlike(e)}}>
                                         {like_icon}
                                         </button>
@@ -91,7 +109,7 @@ console.log("========", likes, user_id)
                                         <button className="post-unlike" value={post?.id} onClick={(e) => {postLike(e)}}>
                                         {unlike_icon}
                                         </button>
-                                    )}
+                                    )} */}
                                 </div>
                                 <div className="comment-icon"
                                     onClick = {() => history.push(`/posts/${post.id}`) }>
