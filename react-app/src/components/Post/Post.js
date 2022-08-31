@@ -30,7 +30,7 @@ const Post = () => {
             {posts?.map((post, idx) => (
                 <div className="post-card" key={idx}>
                         <div className="post-top">
-                            <div className="post-user">
+                            <div className="post-user" onClick={() => history.push(`/users/${post.user_id}`)}>
                                 <img className="post-user-img" src={post.image_url}></img>
                                 {post?.username}
                             </div>
@@ -43,17 +43,24 @@ const Post = () => {
 
                         <div className="post-mid">
                             {post?.media_url.slice(-3) == "mp4" || post?.media_url.slice(-3) == "mov" ? (
-                            <div className="post-video">
+                            <div className="post-video"
+                                onClick={() => history.push(`/posts/${post.id}`)}
+                            >
                                 <ReactPlayer
                                     controls={true}
                                     url={post?.media_url}
                                     width='100%'
                                     height='100%'
+                                    muted={true}
+                                    playing={true}
                                 />
                             </div>
                             ):(
                             <div className="post-img">
-                                <img className="post-img" src={post?.media_url}></img>
+                                <img className="post-img"
+                                    src={post?.media_url}
+                                    onClick={() => history.push(`/posts/${post.id}`)}
+                                ></img>
                             </div>
                             )}
                             <div className="post-description">

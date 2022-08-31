@@ -34,22 +34,17 @@ const NewPost = ({setShowModal}) => {
             errorr.push("Please write a caption.");
         }
 
-        // if (image === false) {
-        //     errorr.push("Please provide an image file.");
-        // }
-        // else {
-            const allowedImg = [".pdf", ".png", ".jpg", "jpeg", ".gif",".mp3", ".wav", ".flac",".mp4", ".mov"]
-            const loadedImg = imgUrl.name.slice(-4).toLowerCase();
+        const allowedImg = [".pdf", ".png", ".jpg", "jpeg", ".gif",".mp3", ".wav", ".flac",".mp4", ".mov"]
+        const loadedImg = imgUrl.name.slice(-4).toLowerCase();
 
-            if(!allowedImg.includes(loadedImg)){
-                errorr.push("Please provide an valid file. (Allowed image type: pdf, png, jpg, jpeg, gif. Allowed video type: mp4, mov)");
-            }
-        // }
+        if(!allowedImg.includes(loadedImg)){
+            errorr.push("Please provide an valid file. (Allowed image type: pdf, png, jpg, jpeg, gif. Allowed video type: mp4, mov)");
+        }
 
         if (errorr.length > 0) {
             return setErrors(errorr);
         }
-// console.log("??????????", url, imgUrl)
+
         const post = {
             file: imgUrl,
             description: description,
@@ -104,6 +99,7 @@ const NewPost = ({setShowModal}) => {
                                 <ReactPlayer
                                 className="preview-img"
                                 url={url}
+                                controls={true}
                                 width='100%'
                                 height='100%'
                                 onError={() => setImage(false)}

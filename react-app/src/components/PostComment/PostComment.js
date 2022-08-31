@@ -65,6 +65,7 @@ const PostComment = ({posts}) => {
                         className="comment-img"
                         width='100%'
                         height='100%'
+                        controls={true}
                         url={spec_post?.media_url} />
                     ):(
                         <img
