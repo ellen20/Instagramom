@@ -18,7 +18,7 @@ const deleteLike = (id) => ({
 })
 
 export const addLike = (post_id) => async (dispatch) => {
-    console.log("?????", post_id)
+
     const res = await fetch(`/api/likes/${post_id}`, {
         method: "POST",
         headers: {
@@ -41,7 +41,7 @@ export const removeLike = (post_id) => async (dispatch) => {
     });
 
     const data = await res.json();
-    console.log("rrrrrrr", data)
+
     if (res.ok) {
         dispatch(deleteLike(data.id))
     } else {
@@ -52,7 +52,7 @@ export const removeLike = (post_id) => async (dispatch) => {
 export const getAllLikes = () => async (dispatch) => {
     const res = await fetch("/api/likes/all")
     const data = await res.json()
-    console.log("??????", data.likes)
+
     if (res.ok) {
         dispatch(getLikes(data.likes))
     } else {
