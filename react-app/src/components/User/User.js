@@ -10,7 +10,7 @@ function User() {
     const { userId } = useParams();
     const allPosts = useSelector((state) => state.posts);
     const posts = Object.values(allPosts).filter(post => post?.user_id == userId)
-    console.log("?????", posts)
+
     useEffect(() => {
         if (!userId) {
             return;

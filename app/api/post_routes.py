@@ -29,16 +29,16 @@ def new_post():
         return {"errors": "image required"}, 400
 
     image = request.files["image"]
-
+    # check file types
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
-
+    # get unique filename to avoid overwritten
     image.filename = get_unique_filename(image.filename)
-
+    # upload file to s3
     upload = upload_file_to_s3(image)
     if "url" not in upload:
         return upload, 400
-
+    # store s3 uploaded url to database
     url = upload["url"]
 
     new_post = Post(user_id=current_user.id, media_url=url, description=request.form.get('description'), created_at=datetime.now())
