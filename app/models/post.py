@@ -6,7 +6,7 @@ class Post(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     media_url = db.Column(db.String(300), nullable=False)
     description = db.Column(db.String(400), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False)
