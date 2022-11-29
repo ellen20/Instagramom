@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Post, Follow, User, db, Comment, Like
 from datetime import datetime
-from app.aws_s3 import *
+from app.aws_s3 import allowed_file, get_unique_filename, upload_file_to_s3
 from sqlalchemy import desc, asc
 
 post_routes = Blueprint('posts', __name__)
