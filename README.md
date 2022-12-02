@@ -2,7 +2,7 @@
 
 Instagramom is a full-stack web application clone of <a href="https://www.instagram.com/">instagram.com</a>. Instagramom allows all moms share their moments such as posting their kid's photos, videos and comments.
 
-<a href="https://instagramom.onrender.com/login" target="_blank"><strong>Explore the website »</strong></a><br/>
+<a href="https://instagramom.onrender.com/login" ><strong>Explore the website »</strong></a><br/>
 
 <details open="open">
   <summary id="table-of-contents">Table of Contents</summary>
