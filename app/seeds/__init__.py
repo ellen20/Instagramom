@@ -24,9 +24,10 @@ def seed():
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
     seed_users()
-    # Add other seed functions here
-
-
+    seed_posts()
+    seed_comments()
+    seed_likes()
+    seed_follows()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
